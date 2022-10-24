@@ -16,9 +16,11 @@ public class MainFrame extends JFrame{
     MyMenuBar menu;
     Toolbar toolbar;
 
+    JSplitPane jsp;
+
 
     private MainFrame(){
-        //initialise();
+
     }
 
     private void initialise(){
@@ -31,13 +33,53 @@ public class MainFrame extends JFrame{
         Image img = kit.getImage("images/iko.jpg");
         setIconImage(img);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Look and feel");
+        setTitle("GeRuMap");
 
         menu= new MyMenuBar();
         setJMenuBar(menu);
 
         toolbar=new Toolbar();
         add(toolbar, BorderLayout.NORTH);
+
+        JLabel leftLabel = new JLabel();
+        JLabel rightLabel = new JLabel();
+/*
+
+        //new JScrollPane(leftLabel), new JScrollPane(rightLabel)
+        jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        jsp.setDividerLocation(150);
+        this.add(jsp);
+
+        Panel panel1 = new Panel();
+        Panel panel2 = new Panel();
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panel1, panel2);
+        this.getContentPane().add(splitPane);
+
+        JScrollPane scrollableTextArea = new JScrollPane(leftLabel);
+        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        this.getContentPane().add(scrollableTextArea);
+*/
+
+
+        JPanel panel1 = new JPanel();
+
+        panel1.setPreferredSize(new Dimension(400,400));
+        JPanel panel2 = new JPanel();
+        panel2.setPreferredSize(new Dimension(400,400));
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                new JScrollPane(panel1),
+                new JScrollPane(panel2));
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().add(splitPane);
+        this.setSize(400,400);
+        this.setLocation(200,200);
+        this.setVisible(true);
+        splitPane.setDividerLocation(150);
+
+
+
+
     }
 
 
