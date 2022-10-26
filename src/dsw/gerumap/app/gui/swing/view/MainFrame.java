@@ -1,6 +1,6 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.AppCore;
+import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +13,9 @@ import java.awt.*;
 public class MainFrame extends JFrame{
 
     private static MainFrame instance = null;
-    MyMenuBar menu;
-    Toolbar toolbar;
+    private MyMenuBar menu;
+    private Toolbar toolbar;
+    private ActionManager actionManager;
 
     JSplitPane jsp;
 
@@ -24,6 +25,7 @@ public class MainFrame extends JFrame{
     }
 
     private void initialise(){
+        actionManager = new ActionManager();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
@@ -43,22 +45,7 @@ public class MainFrame extends JFrame{
 
         JLabel leftLabel = new JLabel();
         JLabel rightLabel = new JLabel();
-/*
 
-        //new JScrollPane(leftLabel), new JScrollPane(rightLabel)
-        jsp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        jsp.setDividerLocation(150);
-        this.add(jsp);
-
-        Panel panel1 = new Panel();
-        Panel panel2 = new Panel();
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panel1, panel2);
-        this.getContentPane().add(splitPane);
-
-        JScrollPane scrollableTextArea = new JScrollPane(leftLabel);
-        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        this.getContentPane().add(scrollableTextArea);
-*/
 
 
         JPanel panel1 = new JPanel();
@@ -88,6 +75,9 @@ public class MainFrame extends JFrame{
         return toolbar;
     }
 
+    public ActionManager getActionManager(){
+        return actionManager;
+    }
 
 
     public void setToolbar(Toolbar toolbar) {

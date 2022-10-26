@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.view;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -10,9 +11,9 @@ public class MyMenuBar extends JMenuBar {
     public MyMenuBar(){
         JMenu file=new JMenu("File"); 
         JMenu help =new JMenu("Help");
-        file.setMnemonic('F');
+        file.setMnemonic(KeyEvent.VK_F);
         JMenu miNew =new JMenu("New");
-        //miNew.setIcon(new ImageIcon("images/new16x16.jpg"));
+        miNew.setIcon(new ImageIcon("images/new16x16.jpg"));
         miNew.addSeparator();
         JMenuItem miInfo =new JMenuItem("Info");
         JMenuItem miEdit = new JMenuItem("Edit");
@@ -22,7 +23,7 @@ public class MyMenuBar extends JMenuBar {
         miInfo.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 final JPopupMenu popup = new JPopupMenu();
-                popup.add(new JMenuItem(new AbstractAction("Nikola Ivancev 5321 RN i Luka Vukadinovic 2921 RN") {
+                popup.add(new JMenuItem(new AbstractAction("Nikola Ivancev 53/21-RN,Luka Vukadinovic 29/21-RN") {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
