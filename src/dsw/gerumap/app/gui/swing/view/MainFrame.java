@@ -59,8 +59,8 @@ public class MainFrame extends JFrame{
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(splitPane);
-        this.setSize(400,400);
-        this.setLocation(200,200);
+        this.setSize(700,500);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         splitPane.setDividerLocation(150);
 
