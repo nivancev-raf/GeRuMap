@@ -1,39 +1,31 @@
 package dsw.gerumap.app.gui.swing.view;
 
+import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
+import dsw.gerumap.app.gui.swing.controller.InfoAction;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.io.IOException;
 
 public class MyMenuBar extends JMenuBar {
+
+    static JFrame f;
+    public static final float CENTER_ALIGNMENT = 0.5f;
+
 
     public MyMenuBar(){
         JMenu file=new JMenu("File"); 
         JMenu help =new JMenu("Help");
         file.setMnemonic(KeyEvent.VK_F);
         JMenu miNew =new JMenu("New");
-        miNew.setIcon(new ImageIcon("images/new16x16.jpg"));
         miNew.addSeparator();
-        JMenuItem miInfo =new JMenuItem("Info");
+
+        JMenuItem miInfo = new JMenuItem("Info");
         JMenuItem miEdit = new JMenuItem("Edit");
         MainFrame.getInstance();
 
-
-        miInfo.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                final JPopupMenu popup = new JPopupMenu();
-                popup.add(new JMenuItem(new AbstractAction("Nikola Ivancev 53/21-RN,Luka Vukadinovic 29/21-RN") {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                       /// ukrasiti
-                    }
-                }));
-                popup.show(e.getComponent(), e.getX(), e.getY());
-            }});
-
-
+        miInfo.addActionListener(MainFrame.getInstance().getActionManager().getInfoAction());
 
         file.add(miNew);
         file.addSeparator();
@@ -45,4 +37,6 @@ public class MyMenuBar extends JMenuBar {
         add(help);
 
     }
+
+
 }
