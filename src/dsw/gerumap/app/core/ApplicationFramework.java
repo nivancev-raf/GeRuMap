@@ -12,7 +12,7 @@ public abstract class ApplicationFramework {
 
     public abstract void run();
 
-    public void initialise(Gui gui){
+    public void initialise(Gui gui, MapRepository mapRepository){
         this.gui = gui;
 
     }

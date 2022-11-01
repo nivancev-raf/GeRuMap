@@ -2,7 +2,9 @@ package dsw.gerumap.app;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.Gui;
+import dsw.gerumap.app.core.MapRepository;
 import dsw.gerumap.app.gui.swing.SwingGui;
+import dsw.gerumap.app.gui.swing.mapRepository.MapRepositoryImplementation;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 public class AppCore extends ApplicationFramework {
@@ -26,7 +28,8 @@ public class AppCore extends ApplicationFramework {
     public static void main(String[] args) {
         Gui gui = new SwingGui();
         ApplicationFramework appcore = AppCore.getInstance();
-        appcore.initialise(gui);
+        MapRepository mapRepository = new MapRepositoryImplementation();
+        appcore.initialise(gui,mapRepository);
         appcore.run();
     }
 }
