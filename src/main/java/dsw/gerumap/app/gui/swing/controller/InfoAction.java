@@ -10,6 +10,7 @@ import java.io.InputStream;
 
 import static dsw.gerumap.app.gui.swing.view.MyMenuBar.CENTER_ALIGNMENT;
 
+
 public class InfoAction extends AbstractGeRuMapAction{
 
     static JFrame f;

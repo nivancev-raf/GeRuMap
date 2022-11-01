@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

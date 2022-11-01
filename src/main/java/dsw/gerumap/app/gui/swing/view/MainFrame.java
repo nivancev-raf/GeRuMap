@@ -4,6 +4,7 @@ import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import lombok.Getter;
 import lombok.Setter;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,7 +33,7 @@ public class MainFrame extends JFrame{
         int screenWidth = screenSize.width;
 
         screenSize.setSize(500, 800);
-        Image img = kit.getImage("images/iko.jpg");
+        Image img = kit.getImage("/images/iko.ico");
         setIconImage(img);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("GeRuMap");

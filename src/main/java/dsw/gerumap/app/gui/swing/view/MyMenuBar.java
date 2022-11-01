@@ -1,7 +1,5 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
-import dsw.gerumap.app.gui.swing.controller.InfoAction;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
