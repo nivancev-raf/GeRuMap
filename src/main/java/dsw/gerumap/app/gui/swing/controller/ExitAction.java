@@ -11,7 +11,7 @@ public class ExitAction extends AbstractGeRuMapAction {
     public ExitAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("images/iko.jpg"));
+        putValue(SMALL_ICON, loadIcon("/images/open.jpg"));
         putValue(NAME, "Exit");
         putValue(SHORT_DESCRIPTION, "Exit");
     }

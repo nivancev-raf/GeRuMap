@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import static javax.swing.Action.ACCELERATOR_KEY;
 
 
 public class NewProjectAction extends AbstractGeRuMapAction {
@@ -14,7 +13,7 @@ public class NewProjectAction extends AbstractGeRuMapAction {
     public NewProjectAction(){
 
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON,loadIcon("images/new.jpg"));
+        putValue(SMALL_ICON,loadIcon("/images/new.jpg"));
         putValue(NAME,"New Project");
         putValue(SHORT_DESCRIPTION,"New Project");
     }

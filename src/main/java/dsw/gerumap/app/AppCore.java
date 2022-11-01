@@ -1,4 +1,4 @@
-package main.java.dsw.gerumap.app;
+package dsw.gerumap.app;
 
 
 import dsw.gerumap.app.core.ApplicationFramework;
