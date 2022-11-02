@@ -1,6 +1,9 @@
 package dsw.gerumap.app.gui.swing.view;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.tree.MapTree;
+import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +21,7 @@ public class MainFrame extends JFrame{
     private Toolbar toolbar;
     private ActionManager actionManager;
 
+    private MapTree mapTree;
     JSplitPane jsp;
 
 
@@ -44,6 +48,9 @@ public class MainFrame extends JFrame{
         toolbar=new Toolbar();
         add(toolbar, BorderLayout.NORTH);
 
+        mapTree = new MapTreeImplementation();
+        JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+
         JLabel leftLabel = new JLabel();
         JLabel rightLabel = new JLabel();
 
@@ -55,7 +62,7 @@ public class MainFrame extends JFrame{
         JPanel panel2 = new JPanel();
         panel2.setPreferredSize(new Dimension(400,400));
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                new JScrollPane(panel1),
+                new JScrollPane(projectExplorer),
                 new JScrollPane(panel2));
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,9 +71,6 @@ public class MainFrame extends JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         splitPane.setDividerLocation(150);
-
-
-
 
     }
 

@@ -4,9 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
+
 
 import static dsw.gerumap.app.gui.swing.view.MyMenuBar.CENTER_ALIGNMENT;
 
@@ -18,7 +16,7 @@ public class InfoAction extends AbstractGeRuMapAction{
     public InfoAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_I, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/iko.jpg"));
+        putValue(SMALL_ICON, loadIcon("/images/new.jpg"));
         putValue(NAME, "Info");
         putValue(SHORT_DESCRIPTION, "Info");
     }
@@ -32,7 +30,6 @@ public class InfoAction extends AbstractGeRuMapAction{
         d.setSize(350, 200);
         d.setVisible(true);
         d.setLocationRelativeTo(f);
-
 
     }
 }

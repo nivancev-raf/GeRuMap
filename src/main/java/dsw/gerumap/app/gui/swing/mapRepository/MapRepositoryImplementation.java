@@ -10,7 +10,7 @@ public class MapRepositoryImplementation implements MapRepository {
     private ProjectExplorer projectExplorer;
 
     public MapRepositoryImplementation() {
-        projectExplorer = new ProjectExplorer("My new Project Explorer");
+        projectExplorer = new ProjectExplorer("My Project Explorer");
     }
 
     @Override
