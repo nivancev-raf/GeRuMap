@@ -19,4 +19,14 @@ public class ProjectExplorer extends MapNodeComposite {
             }
         }
     }
+
+    @Override
+    public void removeChild(MapNode child) {
+        if (child != null &&  child instanceof Project){
+            Project project = (Project) child;
+            if (this.getChildren().contains(project)){
+                this.getChildren().remove(project);
+            }
+        }
+    }
 }

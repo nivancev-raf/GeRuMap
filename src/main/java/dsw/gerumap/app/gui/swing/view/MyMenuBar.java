@@ -8,8 +8,35 @@ import java.io.IOException;
 
 public class MyMenuBar extends JMenuBar {
 
-    static JFrame f;
-    public static final float CENTER_ALIGNMENT = 0.5f;
+
+
+    public MyMenuBar() {
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setMnemonic(KeyEvent.VK_F);
+        fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction()); // mora biti selektovan prvo "My projec exp" da
+                                                                                        // bi se pravili novi child-ovi
+        fileMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
+
+
+        JMenu help =new JMenu("Help");
+        //help.add(MainFrame.getInstance().getActionManager().getEditAction()); // kad bude bio edit omogucen dodati ovo
+
+        // za sad je ovako:
+        JMenuItem miEdit = new JMenuItem("Edit");
+        help.add(miEdit);
+        this.add(fileMenu);
+        this.add(help);
+
+    }
+
+
+
+
+
+
+
+/*
 
 
     public MyMenuBar(){
@@ -35,6 +62,6 @@ public class MyMenuBar extends JMenuBar {
         add(help);
 
     }
-
+*/
 
 }
