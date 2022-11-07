@@ -14,8 +14,10 @@ public class MyMenuBar extends JMenuBar {
         JMenu fileMenu = new JMenu("File");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction()); // mora biti selektovan prvo "My projec exp" da
-                                                                                        // bi se pravili novi child-ovi
+        fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteAction());    // bi se pravili novi child-ovi
+        fileMenu.add(MainFrame.getInstance().getActionManager().getEditAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getAuthorAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
 
 

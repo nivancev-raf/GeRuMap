@@ -13,7 +13,7 @@ public class ActionManager {
     private InfoAction infoAction;
     private DeleteAction deleteAction;
     private EditAction editAction;
-
+    private AuthorAction authorAction;
 
     public ActionManager(){
 
@@ -29,6 +29,7 @@ public class ActionManager {
         infoAction = new InfoAction();
         deleteAction = new DeleteAction();
         editAction = new EditAction();
+        authorAction = new AuthorAction();
 
     }
 }
