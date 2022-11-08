@@ -25,6 +25,5 @@ public class NewProjectAction extends AbstractGeRuMapAction {
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         MainFrame.getInstance().getMapTree().addChild(selected);
-        int label = new Random().nextInt(100);
     }
 }

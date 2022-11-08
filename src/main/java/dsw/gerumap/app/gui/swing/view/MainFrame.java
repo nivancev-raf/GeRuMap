@@ -22,9 +22,11 @@ public class MainFrame extends JFrame{
     private ActionManager actionManager;
 
     private MapTree mapTree;
+    private JTabbedPane jTabbedPane;
+
     JSplitPane jsp;
 
-
+    JPanel panel2 = new JPanel();
     private MainFrame(){
 
     }
@@ -35,6 +37,7 @@ public class MainFrame extends JFrame{
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
+
 
         screenSize.setSize(500, 800);
         Image img = kit.getImage("/images/iko.ico");
@@ -51,15 +54,13 @@ public class MainFrame extends JFrame{
         mapTree = new MapTreeImplementation();
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
 
-        JLabel leftLabel = new JLabel();
+
+        JLabel leftLabel = new JLabel("123");
         JLabel rightLabel = new JLabel();
 
 
 
-        JPanel panel1 = new JPanel();
 
-        panel1.setPreferredSize(new Dimension(400,400));
-        JPanel panel2 = new JPanel();
         panel2.setPreferredSize(new Dimension(400,400));
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 new JScrollPane(projectExplorer),

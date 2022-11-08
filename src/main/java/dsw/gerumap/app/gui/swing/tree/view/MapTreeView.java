@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree.view;
 
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeCellEditor;
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeSelectionListener;
+import dsw.gerumap.app.gui.swing.tree.controller.MouseTreeListener;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
@@ -15,6 +16,7 @@ public class MapTreeView extends JTree {
         MapTreeCellRenderer ruTreeCellRenderer = new MapTreeCellRenderer();
         addTreeSelectionListener(new MapTreeSelectionListener());
         setCellEditor(new MapTreeCellEditor(this, ruTreeCellRenderer));
+        this.addMouseListener(new MouseTreeListener());
         setCellRenderer(ruTreeCellRenderer);
         setEditable(true);
     }
