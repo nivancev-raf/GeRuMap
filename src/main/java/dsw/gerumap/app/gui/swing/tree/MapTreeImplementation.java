@@ -18,6 +18,8 @@ import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,6 +32,7 @@ public class MapTreeImplementation implements MapTree {
     private JDialog dialog;
     private MapTreeItem selected;
     private JLabel labela;
+    List<MapNode> childrenOfProject = new ArrayList<>();;
 
     private static int i = 1;
     private static int k = 1;
@@ -48,12 +51,14 @@ public class MapTreeImplementation implements MapTree {
 
         if (!(parent.getMapNode() instanceof MapNodeComposite))
             return;
-
+        MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         MapNode child = createChild(parent.getMapNode());
         parent.add(new MapTreeItem(child));
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+
+
 
     }
 
@@ -158,9 +163,11 @@ public class MapTreeImplementation implements MapTree {
         if (parent instanceof ProjectExplorer)
             return  new Project("Project" + i++, parent);
         if (parent instanceof Project) {
+            childrenOfProject.add(parent);
             return new MindMap("MindMap" + k++, parent);
         }
         return null;
     }
+
 
 }

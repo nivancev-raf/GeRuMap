@@ -33,4 +33,8 @@ public abstract class MapNodeComposite extends MapNode{
         }
         return null;
     }
+
+    public List<MapNode> getChildren() {
+        return children;
+    }
 }
