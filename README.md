@@ -8,4 +8,4 @@ Link za Notion specifikaciju:
 https://evergreen-tablecloth-b36.notion.site/GeRuMap-Specifikacija-07b4e67b71de436584df910bd271f7df
 
 Link za Klasni dijagram:
-https://www.notion.so/Klasni-dijagram-ff072ffa88984338a0ee68adf5f434c6
+https://www.notion.so/Klasni-dijagram-34ae2aefe312428bb828d3fdf2a387ac
