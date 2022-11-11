@@ -79,9 +79,6 @@ public class MapTreeImplementation implements MapTree {
         if (!(child.getMapNode() instanceof MapNodeComposite))
             return;
 
-
-
-
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         child = selected;
         String name = child.getMapNode().getName();

@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.controller.ActionManager;
 import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,11 +23,14 @@ public class MainFrame extends JFrame{
     private Toolbar toolbar;
     private ActionManager actionManager;
 
+    private JLabel label;
+    private JLabel labela2;
     private MapTree mapTree;
+
+    private JLabel labela3;
 
     JTabbedPane tp;
     JSplitPane jsp;
-
     JPanel panel2;
     private MainFrame(){
 
@@ -38,7 +42,7 @@ public class MainFrame extends JFrame{
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
         int screenWidth = screenSize.width;
-        panel2 = new JPanel();
+        panel2 = new JPanel(new BorderLayout());
 
         screenSize.setSize(500, 800);
         Image img = kit.getImage("/images/iko.ico");
@@ -55,13 +59,17 @@ public class MainFrame extends JFrame{
         mapTree = new MapTreeImplementation();
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
 
+        panel2.setPreferredSize(new Dimension(900,700));
 
-        JLabel leftLabel = new JLabel("123");
-        JLabel rightLabel = new JLabel();
+        labela2 = new JLabel(" ");
 
-        //JTabbedPane tp = new TabbedPane();
+        label = new JLabel(" ");
 
-        panel2.setPreferredSize(new Dimension(600,700));
+        labela3 = new JLabel(label.getText() + " " +  labela2.getText(),SwingConstants.LEFT);
+        labela3.setVerticalAlignment(JLabel.TOP);
+        labela3.setPreferredSize(new Dimension(5,5));
+
+        panel2.add(labela3);
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 new JScrollPane(projectExplorer),
                 new JScrollPane(panel2));
@@ -72,7 +80,6 @@ public class MainFrame extends JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         splitPane.setDividerLocation(150);
-
     }
 
 

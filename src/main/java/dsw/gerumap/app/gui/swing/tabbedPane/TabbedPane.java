@@ -11,7 +11,7 @@ import java.awt.*;
 public class TabbedPane extends JTabbedPane{
 
     private JPanel jPanel;
-
+    private JTabbedPane tabs;
     public TabbedPane(MapTreeItem parent) {
         initialise(parent);
     }
@@ -19,12 +19,11 @@ public class TabbedPane extends JTabbedPane{
     public void initialise(MapTreeItem parent){
 
         for (MapNode child : ((MapNodeComposite) parent.getMapNode()).getChildren()){
-            // problem : lose se prave tabovi i treba promeniti velicinu panela
             jPanel = new JPanel();
-            jPanel.add(new Label("Pozor 1"));
-            //this.setBounds(50, 50, 250, 200);
-            this.add(child.getName(), jPanel);
+            this.setBorder(BorderFactory.createEmptyBorder(30,5,5,5));
+            this.setBounds(150, 30, 500, 200);
+            this.setSize(2000,2000);
+            this.addTab(child.getName(), jPanel);
         }
-
     }
 }

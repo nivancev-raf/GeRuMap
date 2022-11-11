@@ -15,18 +15,20 @@ import java.awt.event.MouseListener;
 
 public class MouseTreeListener implements MouseListener {
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
-        MapNode mp = selected.getMapNode();
         if (selected.getMapNode() instanceof Project) {
             if (e.getClickCount() == 2) {
                 MainFrame.getInstance().getPanel2().add(new TabbedPane(selected));
+    /*
+                label = new JLabel(selected.getMapNode().getName(),JLabel.LEFT);
+                label.setVerticalAlignment(JLabel.TOP);
+                label.setPreferredSize(new Dimension(5,5));
+      */
+                MainFrame.getInstance().getLabel().setText("Project name: " + selected.getMapNode().getName());
                 MainFrame.getInstance().getPanel2().updateUI();
-
-
             }
         }
     }
