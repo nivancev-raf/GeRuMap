@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
@@ -90,11 +91,18 @@ public class AuthorAction extends AbstractGeRuMapAction{
         dialog.add(panel2);
 
 
+
+
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
                 String authorName = textField.getText();
-                MainFrame.getInstance().getProjectView().getLabel2().setText("Author name: " + authorName);
+                if (selected.getMapNode() instanceof Project){
+                    ((Project) selected.getMapNode()).setAutor(authorName);
+                }
+                MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
+
                 dialog.dispose();
             }
         });

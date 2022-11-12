@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Getter
 
-public class Project  extends MapNodeComposite {
+public class Project extends MapNodeComposite {
     private String ime;
     private String autor;
     private String putanja;
