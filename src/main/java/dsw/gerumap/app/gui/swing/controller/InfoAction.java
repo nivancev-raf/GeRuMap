@@ -9,14 +9,16 @@ import java.io.IOException;
 
 
 import static dsw.gerumap.app.gui.swing.view.MyMenuBar.CENTER_ALIGNMENT;
+import static java.awt.Component.BOTTOM_ALIGNMENT;
+import static java.awt.Component.TOP_ALIGNMENT;
 
 
 public class InfoAction extends AbstractGeRuMapAction{
 
     static JFrame f;
     InfoAction infoAction;
-    private static final String IMAGE_URL = "/images/edit.png";
-    private static final String IMAGE = "/images/log-out.png";
+    private static final String IMAGE_URL = "/images/slika1.jpg";
+    private static final String IMAGE = "/images/slika2.jpg";
     public InfoAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_I, ActionEvent.CTRL_MASK));
@@ -37,7 +39,8 @@ public class InfoAction extends AbstractGeRuMapAction{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JPanel panel = new JPanel(new GridLayout(2,2,10,10));
+        JPanel panel = new JPanel(new GridLayout(2,2));
+
         GridBagConstraints cs = new GridBagConstraints();
 
         cs.fill = GridBagConstraints.HORIZONTAL;
