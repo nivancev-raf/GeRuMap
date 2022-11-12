@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.mapRepository.implementation;
 
 
+import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
 import lombok.Getter;
@@ -20,6 +21,21 @@ public class MindMap extends MapNodeComposite {
 
     @Override
     public void removeChild(MapNode child) {
+
+    }
+
+    @Override
+    public void addSubscriber(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void removeSubscriber(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void Notify(Object notification) {
 
     }
 }

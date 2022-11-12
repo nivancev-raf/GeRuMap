@@ -1,7 +1,7 @@
 package dsw.gerumap.app.core.observer;
 
-public interface Subscriber {
+public interface Subscriber { // view
 
-    void update();
+    void update(Object notification);
 
 }

@@ -1,11 +1,12 @@
 package dsw.gerumap.app.gui.swing.mapRepository.composite;
 
+import dsw.gerumap.app.core.observer.Publisher;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class MapNode {
+public abstract class MapNode implements Publisher {
     private String name;
     private MapNode parent;
 

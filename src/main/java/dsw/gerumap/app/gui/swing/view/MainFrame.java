@@ -23,11 +23,9 @@ public class MainFrame extends JFrame{
     private Toolbar toolbar;
     private ActionManager actionManager;
 
-    private JLabel label;
-    private JLabel labela2;
     private MapTree mapTree;
 
-    private JLabel labela3;
+    private ProjectView projectView;
 
     JTabbedPane tp;
     JSplitPane jsp;
@@ -61,18 +59,14 @@ public class MainFrame extends JFrame{
 
         panel2.setPreferredSize(new Dimension(900,700));
 
-        labela2 = new JLabel(" ");
 
-        label = new JLabel(" ");
 
-        labela3 = new JLabel(label.getText() + " " +  labela2.getText(),SwingConstants.LEFT);
-        labela3.setVerticalAlignment(JLabel.TOP);
-        labela3.setPreferredSize(new Dimension(5,5));
+        projectView = new ProjectView();
 
-        panel2.add(labela3);
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 new JScrollPane(projectExplorer),
-                new JScrollPane(panel2));
+                new JScrollPane(projectView));
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(splitPane);

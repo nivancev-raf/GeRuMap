@@ -11,12 +11,12 @@ import java.awt.*;
 public class TabbedPane extends JTabbedPane{
 
     private JPanel jPanel;
-    private JTabbedPane tabs;
     public TabbedPane(MapTreeItem parent) {
-        initialise(parent);
+        initialiseTabbedView(parent);
     }
 
-    public void initialise(MapTreeItem parent){
+    public void initialiseTabbedView(MapTreeItem parent){
+
 
         for (MapNode child : ((MapNodeComposite) parent.getMapNode()).getChildren()){
             jPanel = new JPanel();

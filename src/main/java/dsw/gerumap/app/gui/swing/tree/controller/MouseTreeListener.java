@@ -21,14 +21,17 @@ public class MouseTreeListener implements MouseListener {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         if (selected.getMapNode() instanceof Project) {
             if (e.getClickCount() == 2) {
-                MainFrame.getInstance().getPanel2().add(new TabbedPane(selected));
-    /*
+                //MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
+                /*
                 label = new JLabel(selected.getMapNode().getName(),JLabel.LEFT);
                 label.setVerticalAlignment(JLabel.TOP);
                 label.setPreferredSize(new Dimension(5,5));
       */
-                MainFrame.getInstance().getLabel().setText("Project name: " + selected.getMapNode().getName());
-                MainFrame.getInstance().getPanel2().updateUI();
+                MainFrame.getInstance().getProjectView().getLabel1().setText(selected.getMapNode().getName());
+
+                MainFrame.getInstance().getProjectView().getTabbedPane().add(new TabbedPane(selected));
+
+                MainFrame.getInstance().getProjectView().updateUI();
             }
         }
     }
