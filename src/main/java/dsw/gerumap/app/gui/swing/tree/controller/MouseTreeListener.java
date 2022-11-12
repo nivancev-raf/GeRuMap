@@ -13,24 +13,23 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MouseTreeListener implements MouseListener {
 
+
+public class MouseTreeListener implements MouseListener {
+    private static int i = 0;
     @Override
     public void mouseClicked(MouseEvent e) {
 
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         if (selected.getMapNode() instanceof Project) {
             if (e.getClickCount() == 2) {
-                //MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
-                /*
-                label = new JLabel(selected.getMapNode().getName(),JLabel.LEFT);
-                label.setVerticalAlignment(JLabel.TOP);
-                label.setPreferredSize(new Dimension(5,5));
-      */
-                MainFrame.getInstance().getProjectView().getLabel1().setText(selected.getMapNode().getName());
 
-                MainFrame.getInstance().getProjectView().getTabbedPane().add(new TabbedPane(selected));
 
+                if (i != 0) MainFrame.getInstance().getProjectView().remove(2); // problem je sto je na pocetku null
+                i++;
+
+                MainFrame.getInstance().getProjectView().getLabel1().setText((selected.getMapNode().getName()));
+                MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
                 MainFrame.getInstance().getProjectView().updateUI();
             }
         }

@@ -95,6 +95,7 @@ public class AuthorAction extends AbstractGeRuMapAction{
             public void actionPerformed(ActionEvent e) {
                 String authorName = textField.getText();
                 MainFrame.getInstance().getProjectView().getLabel2().setText("Author name: " + authorName);
+
                 dialog.dispose();
             }
         });
