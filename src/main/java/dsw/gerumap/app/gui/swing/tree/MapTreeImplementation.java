@@ -83,13 +83,33 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
-    public void removeChild(MapTreeItem child) { // ja prosledjujem selektovan root sto je My Project Explorer
-
+    public void removeChild(MapTreeItem parent) { // ja prosledjujem selektovan root sto je My Project Explorer
+/*
         if (!(child.getMapNode() instanceof MapNodeComposite))
             return;
             MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
             parent.removeChild((MapNode) child.getMapNode());
             treeModel.removeNodeFromParent(child);
+            //((Project)child.getMapNode()).delete();
+*/
+
+        if(parent.getMapNode() instanceof Project){
+            parent.removeFromParent();
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+            ((Project) parent.getMapNode()).delete();
+            ((ProjectExplorer)parent.getMapNode().getParent()).removeChild((Project)parent.getMapNode());
+        }
+
+        if (parent.getMapNode() instanceof MindMap){
+            Project p = (Project) parent.getMapNode().getParent();
+            parent.removeFromParent();
+            ((MapNodeComposite)parent.getMapNode().getParent()).removeChild(parent.getMapNode());
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+
+        }
+
 
     }
 

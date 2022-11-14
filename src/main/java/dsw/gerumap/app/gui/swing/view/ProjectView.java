@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -45,19 +46,21 @@ public class ProjectView extends JPanel implements Subscriber{
 
     @Override
     public void update(Object notification) {
-        if (notification instanceof Project){
-            Project p = (Project) notification;
-                if (tabbedPane != null) tabbedPane.setTabs(p.getChildren());
-                    label1.setText(p.getName());
-        }
-
 
         if (notification == null){
-            this.removeAll();
+            tabbedPane.setTabs(new ArrayList<>());
+            label1.setText("");
+            label2.setText("");
+            return;
         }
 
+        Project p = (Project) notification;
+        if (tabbedPane != null){
+            tabbedPane.setTabs(p.getChildren());
+        }
+            label1.setText(p.getName());
 
-        //SwingUtilities.updateComponentTreeUI(this);
+
 
     }
 }

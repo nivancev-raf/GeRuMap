@@ -31,6 +31,7 @@ public class ProjectExplorer extends MapNodeComposite {
             if (this.getChildren().contains(project)){
                 this.getChildren().remove(project);
                 child.setParent(null);
+
             }
         }
     }

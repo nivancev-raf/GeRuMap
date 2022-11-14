@@ -28,7 +28,9 @@ public class Project extends MapNodeComposite {
     }
 
 
-
+    public void delete(){
+        notifySubscribers(null);
+    }
 
 
     @Override
