@@ -35,7 +35,7 @@ public class MindMap extends MapNodeComposite {
     }
 
     @Override
-    public void Notify(Object notification) {
+    public void notifySubscribers(Object notification) {
 
     }
 }

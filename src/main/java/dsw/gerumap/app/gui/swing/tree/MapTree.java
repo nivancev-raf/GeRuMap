@@ -13,6 +13,7 @@ public interface MapTree {
     void addChild(MapTreeItem parent);
     void removeChild(MapTreeItem parent);
     void editChild(MapTreeItem parent);
+    void deselect();
 
     MapTreeItem getSelectedNode();
 

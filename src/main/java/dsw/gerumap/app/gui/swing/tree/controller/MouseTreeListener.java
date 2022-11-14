@@ -22,7 +22,7 @@ public class MouseTreeListener implements MouseListener {
 
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         if (selected.getMapNode() instanceof Project) {
-            if (e.getClickCount() == 2) {
+            if (e.getClickCount() == 1) {
 
 
                 if (i != 0) MainFrame.getInstance().getProjectView().remove(2); // problem je sto je na pocetku null
@@ -34,8 +34,8 @@ public class MouseTreeListener implements MouseListener {
 
                 MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
                 //MainFrame.getInstance().getProjectView().getLabel2().;
-
-                MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
+                MainFrame.getInstance().getProjectView().initialiseTabbedPane(new TabbedPane(selected));
+                //MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
                 MainFrame.getInstance().getProjectView().updateUI();
             }
         }

@@ -1,23 +1,27 @@
 package dsw.gerumap.app.gui.swing.tabbedPane;
 
+import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
-import java.awt.*;
+import java.util.List;
 
-public class TabbedPane extends JTabbedPane{
+
+public class TabbedPane extends JTabbedPane {
 
     private JPanel jPanel;
+
     public TabbedPane(MapTreeItem parent) {
         initialiseTabbedView(parent);
     }
 
     public void initialiseTabbedView(MapTreeItem parent){
 
-
+        removeAll();
         for (MapNode child : ((MapNodeComposite) parent.getMapNode()).getChildren()){
             jPanel = new JPanel();
             this.setBorder(BorderFactory.createEmptyBorder(30,5,5,5));
@@ -26,4 +30,15 @@ public class TabbedPane extends JTabbedPane{
             this.addTab(child.getName(), jPanel);
         }
     }
+
+    public void setTabs(List<MapNode> nodes){
+        removeAll();
+        for (MapNode node : nodes){
+            addTab(node.getName(), new JPanel());
+        }
+
+
+    }
+
+
 }

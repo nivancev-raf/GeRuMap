@@ -32,7 +32,6 @@ public class MapTreeImplementation implements MapTree {
     private JDialog dialog;
     private MapTreeItem selected;
     private JLabel labela;
-    List<MapNode> childrenOfProject = new ArrayList<>();;
 
     private static int i = 1;
     private static int k = 1;
@@ -48,7 +47,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void addChild(MapTreeItem parent) { // parent je My Project Explorer
-
+/*
         if (!(parent.getMapNode() instanceof MapNodeComposite))
             return;
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
@@ -57,6 +56,27 @@ public class MapTreeImplementation implements MapTree {
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+*/
+
+        if (parent.getMapNode() instanceof ProjectExplorer){
+            MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+            MapNode child = createChild(parent.getMapNode());
+            parent.add(new MapTreeItem(child));
+            ((MapNodeComposite) parent.getMapNode()).addChild(child);
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
+
+        if (parent.getMapNode() instanceof Project){
+            MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+            MapNode child = createChild(parent.getMapNode());
+            parent.add(new MapTreeItem(child));
+            ((MapNodeComposite) parent.getMapNode()).addChild(child);
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
+
+
 
 
 
@@ -67,10 +87,9 @@ public class MapTreeImplementation implements MapTree {
 
         if (!(child.getMapNode() instanceof MapNodeComposite))
             return;
-        MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
-        parent.removeChild((MapNode) child.getMapNode());
-
-        treeModel.removeNodeFromParent(child);
+            MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
+            parent.removeChild((MapNode) child.getMapNode());
+            treeModel.removeNodeFromParent(child);
 
     }
 
@@ -152,6 +171,11 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
+    public void deselect() {
+        treeView.clearSelection();
+    }
+
+    @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
@@ -160,7 +184,6 @@ public class MapTreeImplementation implements MapTree {
         if (parent instanceof ProjectExplorer)
             return  new Project("Project" + i++, parent);
         if (parent instanceof Project) {
-            childrenOfProject.add(parent);
             return new MindMap("MindMap" + k++, parent);
         }
         return null;

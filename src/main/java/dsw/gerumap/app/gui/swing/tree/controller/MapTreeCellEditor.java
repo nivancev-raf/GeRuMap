@@ -3,7 +3,12 @@ package dsw.gerumap.app.gui.swing.tree.controller;
 
 
 
+import dsw.gerumap.app.core.observer.Publisher;
+import dsw.gerumap.app.core.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -14,12 +19,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 
-public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
+public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionListener, Publisher {
 
 
     private Object clickedOn =null;
     private JTextField edit=null;
 
+    private Subscriber subscriber;
     public MapTreeCellEditor(JTree arg0, DefaultTreeCellRenderer arg1) {
         super(arg0, arg1);
     }
@@ -48,12 +54,33 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
         if (!(clickedOn instanceof MapTreeItem))
             return;
+        addSubscriber(MainFrame.getInstance().getProjectView());
 
         MapTreeItem clicked = (MapTreeItem) clickedOn;
         clicked.setName(e.getActionCommand());
+        if (clicked.getMapNode() instanceof Project)
+            notifySubscribers((Project)clicked.getMapNode());
+
+        if (clicked.getMapNode() instanceof MindMap)
+            notifySubscribers((Project)clicked.getMapNode().getParent());
+
+        MainFrame.getInstance().getMapTree().deselect();
 
     }
 
 
+    @Override
+    public void addSubscriber(Subscriber subscriber) {
+        this.subscriber = subscriber;
+    }
 
+    @Override
+    public void removeSubscriber(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+        subscriber.update(notification);
+    }
 }

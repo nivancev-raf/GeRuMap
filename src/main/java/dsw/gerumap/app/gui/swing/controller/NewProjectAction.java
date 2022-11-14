@@ -1,5 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.observer.Publisher;
+import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
@@ -11,8 +13,9 @@ import java.util.Random;
 
 
 
-public class NewProjectAction extends AbstractGeRuMapAction {
+public class NewProjectAction extends AbstractGeRuMapAction implements Publisher {
 
+    Subscriber mainFrame;
     public NewProjectAction(){
 
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
@@ -25,5 +28,22 @@ public class NewProjectAction extends AbstractGeRuMapAction {
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
         MainFrame.getInstance().getMapTree().addChild(selected);
+    }
+
+    @Override
+    public void addSubscriber(Subscriber subscriber) {
+        mainFrame = subscriber;
+    }
+
+    @Override
+    public void removeSubscriber(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+        if (mainFrame == null) return;
+        mainFrame.update(notification);
+
     }
 }

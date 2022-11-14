@@ -21,7 +21,7 @@ public class Element extends MapNode{
     }
 
     @Override
-    public void Notify(Object notification) {
+    public void notifySubscribers(Object notification) {
 
     }
 }
