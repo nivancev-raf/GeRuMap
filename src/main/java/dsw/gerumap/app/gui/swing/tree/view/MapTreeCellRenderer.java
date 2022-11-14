@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.tree.view;
 
 
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
@@ -20,10 +21,12 @@ public class MapTreeCellRenderer extends DefaultTreeCellRenderer {
         URL imageURL = null;
 
         if (((MapTreeItem)value).getMapNode() instanceof ProjectExplorer) {
-            imageURL = getClass().getResource("/images/tdiagram.gif");
+            imageURL = getClass().getResource("/images/New_file.png");
         }
         else if (((MapTreeItem)value).getMapNode() instanceof Project) {
-            imageURL = getClass().getResource("/images/tproject.gif");
+            imageURL = getClass().getResource("/images/projekat.png");
+        } else if(((MapTreeItem)value).getMapNode() instanceof MindMap){
+            imageURL = getClass().getResource("/images/mind1.png");
         }
 
         Icon icon = null;

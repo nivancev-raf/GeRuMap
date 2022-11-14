@@ -15,7 +15,7 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.setMnemonic(KeyEvent.VK_F);
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction()); // mora biti selektovan prvo "My projec exp" da
         fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteAction());    // bi se pravili novi child-ovi
-        fileMenu.add(MainFrame.getInstance().getActionManager().getEditAction());
+        //fileMenu.add(MainFrame.getInstance().getActionManager().getEditAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getAuthorAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
@@ -23,10 +23,9 @@ public class MyMenuBar extends JMenuBar {
 
         JMenu help =new JMenu("Help");
         //help.add(MainFrame.getInstance().getActionManager().getEditAction()); // kad bude bio edit omogucen dodati ovo
+        help.add(MainFrame.getInstance().getActionManager().getEditAction());
+        help.setMnemonic(KeyEvent.VK_H);
 
-        // za sad je ovako:
-        JMenuItem miEdit = new JMenuItem("Edit");
-        help.add(miEdit);
         this.add(fileMenu);
         this.add(help);
 
