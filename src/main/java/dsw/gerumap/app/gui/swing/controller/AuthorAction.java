@@ -1,8 +1,13 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.logger.EventType;
+import dsw.gerumap.app.logger.MessageGeneratorImplementation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +23,8 @@ public class AuthorAction extends AbstractGeRuMapAction{
     private JLabel labela;
 
     private JTextField textField;
+    private EventType type;
+    private MessageGeneratorImplementation msg;
 
     public AuthorAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
@@ -43,6 +50,14 @@ public class AuthorAction extends AbstractGeRuMapAction{
         dialog.setLocationRelativeTo(f);
 */
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
+        if (selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
+            return;
+        }
+        if (selected.getMapNode() instanceof ProjectExplorer){
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.ADD_AUTHOR_ERROR);
+            return;
+        }
         String name = selected.getMapNode().getName();
         dialog = new JDialog();
         dialog.setTitle("Add author");
@@ -90,9 +105,7 @@ public class AuthorAction extends AbstractGeRuMapAction{
         panel2.add(panel);
         dialog.add(panel2);
 
-
-
-
+        
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,7 +114,23 @@ public class AuthorAction extends AbstractGeRuMapAction{
                 if (selected.getMapNode() instanceof Project){
                     ((Project) selected.getMapNode()).setAutor(authorName);
                 }
+
+                if(selected.getMapNode() instanceof MindMap){
+                    // nemoguce je promeniti ime mind mapu
+                    ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.ADD_AUTHOR_ERROR);
+                    return;
+                }
+                if (authorName.isEmpty()){
+                    ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.FIELD_CANNOT_BE_EMPTY);
+                    return;
+                }
+
+
+
+
                 MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
+
+
 
                 dialog.dispose();
             }
@@ -113,8 +142,6 @@ public class AuthorAction extends AbstractGeRuMapAction{
                 dialog.dispose();
             }
         });
-
-
         dialog.setVisible(true);
     }
 }

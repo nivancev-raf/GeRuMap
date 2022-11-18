@@ -1,7 +1,9 @@
 package dsw.gerumap.app.gui.swing.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.logger.EventType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,6 +28,10 @@ public class EditAction extends AbstractGeRuMapAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+        if (selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
+            return;
+        }
         MainFrame.getInstance().getMapTree().editChild(selected);
     }
 }

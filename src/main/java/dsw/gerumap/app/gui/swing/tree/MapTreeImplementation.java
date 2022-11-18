@@ -1,6 +1,10 @@
 package dsw.gerumap.app.gui.swing.tree;
 
 
+import dsw.gerumap.app.AppCore;
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.SwingGui;
+import dsw.gerumap.app.gui.swing.factory.NodeFactory;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Element;
@@ -10,6 +14,9 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.logger.ConsoleLogger;
+import dsw.gerumap.app.logger.EventType;
+import dsw.gerumap.app.logger.MessageGeneratorImplementation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,7 +39,9 @@ public class MapTreeImplementation implements MapTree {
     private JDialog dialog;
     private MapTreeItem selected;
     private JLabel labela;
-    List<MapNode> childrenOfProject = new ArrayList<>();;
+    private MessageGeneratorImplementation msg;
+    private EventType eventType;
+    private ConsoleLogger cl;
 
     private static int i = 1;
     private static int k = 1;
@@ -48,7 +57,7 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public void addChild(MapTreeItem parent) { // parent je My Project Explorer
-
+/*
         if (!(parent.getMapNode() instanceof MapNodeComposite))
             return;
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
@@ -57,21 +66,61 @@ public class MapTreeImplementation implements MapTree {
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+*/
 
+        if (parent.getMapNode() instanceof ProjectExplorer) {
+            MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+            Project child = (Project)createChild(parent.getMapNode());
+            parent.add(new MapTreeItem(child));
+            ((MapNodeComposite) parent.getMapNode()).addChild(child);
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
 
-
+        if (parent.getMapNode() instanceof Project) {
+            ProjectExplorer pe = (ProjectExplorer) parent.getMapNode().getParent();
+            if (pe == null) return;
+            MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+            MindMap child = (MindMap) createChild(parent.getMapNode());
+            parent.add(new MapTreeItem(child));
+            ((MapNodeComposite) parent.getMapNode()).addChild(child);
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
+        if(parent.getMapNode() instanceof MindMap){
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.ADDING_ELEMENT);
+            return;
+        }
     }
 
     @Override
-    public void removeChild(MapTreeItem child) { // ja prosledjujem selektovan root sto je My Project Explorer
-
+    public void removeChild(MapTreeItem parent) { // ja prosledjujem selektovan root sto je My Project Explorer
+/*
         if (!(child.getMapNode() instanceof MapNodeComposite))
             return;
-        MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
-        parent.removeChild((MapNode) child.getMapNode());
+            MapNodeComposite parent = (MapNodeComposite) child.getMapNode().getParent();
+            parent.removeChild((MapNode) child.getMapNode());
+            treeModel.removeNodeFromParent(child);
+            //((Project)child.getMapNode()).delete();
+*/
 
-        treeModel.removeNodeFromParent(child);
+        if (parent.getMapNode() instanceof Project) {
+            parent.removeFromParent();
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+            ((Project) parent.getMapNode()).delete();
+            ((ProjectExplorer) parent.getMapNode().getParent()).removeChild((Project) parent.getMapNode());
+            MainFrame.getInstance().getMapTree().deselect();
+        }
 
+        if (parent.getMapNode() instanceof MindMap) {
+            parent.removeFromParent();
+            ((MapNodeComposite) parent.getMapNode().getParent()).removeChild(parent.getMapNode());
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+            MainFrame.getInstance().getMapTree().deselect();
+
+        }
     }
 
     @Override
@@ -85,7 +134,7 @@ public class MapTreeImplementation implements MapTree {
         dialog = new JDialog();
         dialog.setTitle("Edit");
 
-        JPanel panel = new JPanel(new GridLayout(2,2,10,10));
+        JPanel panel = new JPanel(new GridLayout(2, 2, 10, 10));
         GridBagConstraints cs = new GridBagConstraints();
 
         cs.fill = GridBagConstraints.HORIZONTAL;
@@ -94,7 +143,7 @@ public class MapTreeImplementation implements MapTree {
         cs.gridx = 0;
         cs.gridy = 0;
         cs.gridwidth = 1;
-        panel.add(labela,cs);
+        panel.add(labela, cs);
 
         //tekst nije selektovan kad se otvori
         textField = new JTextField(20);
@@ -103,7 +152,7 @@ public class MapTreeImplementation implements MapTree {
         cs.gridy = 0;
         cs.gridwidth = 2;
 
-        panel.add(textField,cs);
+        panel.add(textField, cs);
 
         dialog.setSize(550, 130);
         dialog.setLocationRelativeTo(null);
@@ -116,12 +165,12 @@ public class MapTreeImplementation implements MapTree {
         cs.gridx = 0;
         cs.gridy = 2;
         cs.gridwidth = 2;
-        panel.add(renameButton,cs);
+        panel.add(renameButton, cs);
 
         cs.gridx = 1;
         cs.gridy = 2;
         cs.gridwidth = 2;
-        panel.add(cancelButton,cs);
+        panel.add(cancelButton, cs);
 
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JPanel panel2 = new JPanel();
@@ -152,19 +201,31 @@ public class MapTreeImplementation implements MapTree {
     }
 
     @Override
+    public void deselect() {
+        treeView.clearSelection();
+    }
+
+    @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
 
     private MapNode createChild(MapNode parent) {
+
+        //NodeFactory factory = ApplicationFramework.getInstance().getMapRepository().getInstance(parent);
+        //return factory.gnetNode(paret);
+        //return factory.createNode(parent.getName(), parent);
+        return ApplicationFramework.getInstance().getMapRepository().getInstance(parent).getNode(parent);
+/*
         if (parent instanceof ProjectExplorer)
             return  new Project("Project" + i++, parent);
         if (parent instanceof Project) {
-            childrenOfProject.add(parent);
             return new MindMap("MindMap" + k++, parent);
         }
         return null;
+
     }
+*/
 
-
+    }
 }

@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
@@ -7,6 +8,7 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
+import dsw.gerumap.app.logger.EventType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +23,13 @@ public class MouseTreeListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
 
         MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
+        if (selected == null){
+            ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
+            return;
+        }
+
         if (selected.getMapNode() instanceof Project) {
-            if (e.getClickCount() == 2) {
+            if (e.getClickCount() == 1) {
 
 
                 if (i != 0) MainFrame.getInstance().getProjectView().remove(2); // problem je sto je na pocetku null
@@ -34,11 +41,13 @@ public class MouseTreeListener implements MouseListener {
 
                 MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
                 //MainFrame.getInstance().getProjectView().getLabel2().;
-
-                MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
+                MainFrame.getInstance().getProjectView().initialiseTabbedPane(new TabbedPane(selected));
+                //MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
                 MainFrame.getInstance().getProjectView().updateUI();
             }
         }
+
+
     }
 
 

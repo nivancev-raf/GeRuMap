@@ -6,6 +6,7 @@ import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.logger.Message;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,8 @@ public class MainFrame extends JFrame{
     private ActionManager actionManager;
 
     private MapTree mapTree;
+
+    private Message message;
 
     private ProjectView projectView;
 
@@ -58,8 +61,6 @@ public class MainFrame extends JFrame{
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
 
         panel2.setPreferredSize(new Dimension(900,700));
-
-
 
         projectView = new ProjectView();
 
