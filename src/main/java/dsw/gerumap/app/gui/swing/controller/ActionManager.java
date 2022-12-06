@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 
+import dsw.gerumap.app.gui.swing.state.controller.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,12 @@ public class ActionManager {
     private DeleteAction deleteAction;
     private EditAction editAction;
     private AuthorAction authorAction;
+    private BrisanjeAction brisanjeAction;
+    private PojamAction pojamAction;
+    private PomeranjeAction pomeranjeAction;
+    private SelekcijaAction selekcijaAction;
+    private VezaAction vezaAction;
+    private ZoomAction zoomAction;
 
     public ActionManager(){
 
@@ -30,6 +37,13 @@ public class ActionManager {
         deleteAction = new DeleteAction();
         editAction = new EditAction();
         authorAction = new AuthorAction();
+
+        brisanjeAction = new BrisanjeAction();
+        pojamAction = new PojamAction();
+        pomeranjeAction = new PomeranjeAction();
+        selekcijaAction = new SelekcijaAction();
+        vezaAction = new VezaAction();
+        zoomAction = new ZoomAction();
 
     }
 }

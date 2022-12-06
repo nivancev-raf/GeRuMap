@@ -45,30 +45,5 @@ public class FactoryUtils {
         return elementFactory;
     }
 
-    /*
-    public static NodeFactory NewElementFactory(){
-        return elementFactory;
-    }
-
-    public static NodeFactory NewProjectFactory(MapNode mapNode){
-        if(mapNode instanceof ProjectExplorer)
-            return projectFactory;
-                return null;
-    }
-
-    public static NodeFactory NewMindMapFactory(MapNode mapNode){
-        if(mapNode instanceof Project){
-            return mindMapFactory;
-        }
-        return null;
-    }
-
-    public static NodeFactory NewProjectExplorerFactory(MapNode mapNode){
-        if(mapNode==null){
-            return projectExplorerFactory;
-        }
-        return null;
-    }
-    */
 
 }

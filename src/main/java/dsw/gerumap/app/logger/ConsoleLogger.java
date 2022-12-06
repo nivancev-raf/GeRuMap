@@ -20,6 +20,8 @@ public class ConsoleLogger implements ErrorLogger, Subscriber {
             System.out.println("Nothing is selected");
         } else if (message.getType().equals(EventType.FIELD_CANNOT_BE_EMPTY)) {
             System.out.println("Field cannot be empty");
+        } else if (message.getType().equals(EventType.FIELD_CANNOT_BE_EMPTY)){
+            System.out.println("Select item properly");
         }
 
     }
@@ -27,7 +29,6 @@ public class ConsoleLogger implements ErrorLogger, Subscriber {
     @Override
     public void update(Object notification) {
         Message msg = (Message) notification;
-        System.out.println(msg.getText());
         JOptionPane.showMessageDialog(MainFrame.getInstance(), msg.text);
     }
 }

@@ -2,10 +2,8 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
-import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
-import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.logger.Message;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +20,8 @@ public class MainFrame extends JFrame{
     private static MainFrame instance = null;
     private MyMenuBar menu;
     private Toolbar toolbar;
+    private Paleta elementToolbar;
+
     private ActionManager actionManager;
 
     private MapTree mapTree;
@@ -41,8 +41,6 @@ public class MainFrame extends JFrame{
         actionManager = new ActionManager();
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
         panel2 = new JPanel(new BorderLayout());
 
         screenSize.setSize(500, 800);
@@ -55,7 +53,9 @@ public class MainFrame extends JFrame{
         setJMenuBar(menu);
 
         toolbar=new Toolbar();
+        elementToolbar = new Paleta();
         add(toolbar, BorderLayout.NORTH);
+        add(elementToolbar, BorderLayout.EAST);
 
         mapTree = new MapTreeImplementation();
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
@@ -78,19 +78,10 @@ public class MainFrame extends JFrame{
     }
 
 
-
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
-
     public ActionManager getActionManager(){
         return actionManager;
     }
 
-
-    public void setToolbar(Toolbar toolbar) {
-        this.toolbar = toolbar;
-    }
 
     public static MainFrame getInstance(){
         if (instance == null){

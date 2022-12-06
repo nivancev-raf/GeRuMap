@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree.controller;
 
 import dsw.gerumap.app.core.observer.Publisher;
 import dsw.gerumap.app.core.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
@@ -27,10 +28,12 @@ public class MapTreeSelectionListener implements TreeSelectionListener, Publishe
         addSubscriber(MainFrame.getInstance().getProjectView());
         TreePath path = e.getPath();
         MapTreeItem treeItemSelected = (MapTreeItem)path.getLastPathComponent();
-//        System.out.println("Selektovan cvor:"+ treeItemSelected.getMapNode().getName());
-//        System.out.println(treeItemSelected.getMapNode());
         if (treeItemSelected.getMapNode() instanceof Project) {
             notifySubscribers(treeItemSelected.getMapNode());
+        }
+
+        if (treeItemSelected.getMapNode() instanceof MindMap) {
+            notifySubscribers(treeItemSelected.getMapNode().getParent());
         }
 
 

@@ -23,19 +23,14 @@ public class MapRepositoryImplementation implements MapRepository {
 
     @Override
     public void addChild(MapNodeComposite parent, MapNode child) {
-        //implementirati metodu
+
     }
 
     @Override
     public NodeFactory getInstance(MapNode mapNode) {
         return FactoryUtils.getInstance().returnNodeFactory(mapNode);
     }
-/*
-    @Override
-    public NodeFactory getInstance(MapNode mapNode) {
-        return FactoryUtils.getInstance().returnNodeFactory(mapNode);
-    }
-*/
+
 
 
 }

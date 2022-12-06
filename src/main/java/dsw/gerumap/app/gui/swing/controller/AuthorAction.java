@@ -17,7 +17,6 @@ import java.awt.event.KeyEvent;
 
 public class AuthorAction extends AbstractGeRuMapAction{
 
-    static JFrame f;
     private JDialog dialog;
 
     private JLabel labela;
@@ -36,19 +35,6 @@ public class AuthorAction extends AbstractGeRuMapAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       /* JDialog dialog = new JDialog(f, "Add Author for the project");
-        JLabel l = new JLabel("Enter name: ");
-        MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
-        JTextField textField = new JTextField(selected.getMapNode().getName());
-        JPanel jPanel = new JPanel();
-        jPanel.add(l);
-        jPanel.add(textField);
-
-        dialog.add(jPanel);
-        dialog.setSize(350, 200);
-        dialog.setVisible(true);
-        dialog.setLocationRelativeTo(f);
-*/
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if (selected == null){
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
@@ -73,7 +59,7 @@ public class AuthorAction extends AbstractGeRuMapAction{
         cs.gridwidth = 1;
         panel.add(labela,cs);
 
-        //tekst nije selektovan kad se otvori
+
         textField = new JTextField(20);
         textField.setText(name);
         cs.gridx = 1;
@@ -116,15 +102,14 @@ public class AuthorAction extends AbstractGeRuMapAction{
                 }
 
                 if(selected.getMapNode() instanceof MindMap){
-                    // nemoguce je promeniti ime mind mapu
                     ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.ADD_AUTHOR_ERROR);
                     return;
                 }
+
                 if (authorName.isEmpty()){
                     ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.FIELD_CANNOT_BE_EMPTY);
                     return;
                 }
-
 
 
 

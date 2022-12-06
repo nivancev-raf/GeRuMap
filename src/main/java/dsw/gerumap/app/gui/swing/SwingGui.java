@@ -11,7 +11,6 @@ import javax.swing.*;
 
 public class SwingGui implements Gui,Subscriber {
 
-    MessageGeneratorImplementation msg;
     private MainFrame instance;
 
 
@@ -28,7 +27,7 @@ public class SwingGui implements Gui,Subscriber {
     @Override
     public void update(Object notification) {
         Message msg = (Message) notification;
-        System.out.println(msg.getText());
         JOptionPane.showMessageDialog(MainFrame.getInstance(), msg);
+
     }
 }

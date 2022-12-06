@@ -16,7 +16,6 @@ import static java.awt.Component.TOP_ALIGNMENT;
 public class InfoAction extends AbstractGeRuMapAction{
 
     static JFrame f;
-    InfoAction infoAction;
     private static final String IMAGE_URL = "/images/slika1.jpg";
     private static final String IMAGE = "/images/slika2.jpg";
     public InfoAction() {

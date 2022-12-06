@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
+import com.sun.tools.javac.Main;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
@@ -27,26 +28,6 @@ public class MouseTreeListener implements MouseListener {
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
             return;
         }
-
-        if (selected.getMapNode() instanceof Project) {
-            if (e.getClickCount() == 1) {
-
-
-                if (i != 0) MainFrame.getInstance().getProjectView().remove(2); // problem je sto je na pocetku null
-                i++;
-
-                MainFrame.getInstance().getProjectView().getLabel1().setText((selected.getMapNode().getName()));
-
-                // labela se ne updatuje za
-
-                MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
-                //MainFrame.getInstance().getProjectView().getLabel2().;
-                MainFrame.getInstance().getProjectView().initialiseTabbedPane(new TabbedPane(selected));
-                //MainFrame.getInstance().getProjectView().add(new TabbedPane(selected));
-                MainFrame.getInstance().getProjectView().updateUI();
-            }
-        }
-
 
     }
 

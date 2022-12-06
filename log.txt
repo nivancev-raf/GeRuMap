@@ -1,3 +1,51 @@
 ERROR: 18.11.2022. 12:01:48 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
 ERROR: 18.11.2022. 12:02:08 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
 ERROR: 18.11.2022. 12:02:14 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:23:20 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:23:23 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:23:26 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:23:28 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:23:33 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 16:23:48 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:24:06 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 16:24:18 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 16:24:21 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:04:22 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:11:54 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:12:43 Field cannot be empty naziv greske: FIELD CANNOT BE EMPTY
+ERROR: 19.11.2022. 18:12:57 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:12:59 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:13:53 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:50:05 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:51:27 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:52:15 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:56:02 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:56:15 You can't add elements manually naziv greske: ADDING ELEMENT
+ERROR: 19.11.2022. 18:56:23 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 18:56:31 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:05:04 You can't add elements manually naziv greske: ADDING ELEMENT
+ERROR: 19.11.2022. 19:07:57 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:08:05 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:08:11 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:09:42 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:09:52 You can't remove project explorer naziv greske: REMOVE PROJECT EXPLORER
+ERROR: 19.11.2022. 19:12:58 Field cannot be empty naziv greske: FIELD CANNOT BE EMPTY
+ERROR: 19.11.2022. 19:13:02 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:13:09 Field cannot be empty naziv greske: FIELD CANNOT BE EMPTY
+ERROR: 19.11.2022. 19:15:56 Field cannot be empty naziv greske: FIELD CANNOT BE EMPTY
+ERROR: 19.11.2022. 19:16:01 Field cannot be empty naziv greske: FIELD CANNOT BE EMPTY
+ERROR: 19.11.2022. 19:35:29 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:35:37 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:39:17 You can't add elements manually naziv greske: ADDING ELEMENT
+ERROR: 19.11.2022. 19:51:48 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:51:52 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:52:35 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:53:31 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:53:41 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:53:51 You can't add elements manually naziv greske: ADDING ELEMENT
+ERROR: 19.11.2022. 19:54:04 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:54:05 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:54:07 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:54:08 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 19.11.2022. 19:54:11 You can't add author here naziv greske: ADD AUTHOR ERROR
+ERROR: 19.11.2022. 19:54:13 You can't remove project explorer naziv greske: REMOVE PROJECT EXPLORER

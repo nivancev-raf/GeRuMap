@@ -34,7 +34,6 @@ public class NewProjectAction extends AbstractGeRuMapAction implements Publisher
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.NON_SELECTED);
             return;
         }
-        System.out.println(selected);
         MainFrame.getInstance().getMapTree().addChild(selected);
     }
 

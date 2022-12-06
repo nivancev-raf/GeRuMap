@@ -34,6 +34,9 @@ public class MessageGeneratorImplementation implements MessageGenerator, Publish
         } else if (type.equals(EventType.FIELD_CANNOT_BE_EMPTY)) {
             message = new Message("Field cannot be empty", type);
             notifySubscribers(message);
+        } else if (type.equals(EventType.NON_SELECTED_STATE)){
+            message = new Message("First select the item with 'select button' in pallete", type);
+            notifySubscribers(message);
         }
     }
 
@@ -57,11 +60,6 @@ public class MessageGeneratorImplementation implements MessageGenerator, Publish
 
     @Override
     public void notifySubscribers(Object notification) {
-//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
-//            return;
-
-        // problem : addSubscriber se nigde ne poziva, ulazi u gornji (zakomentarisani) if
-
         for(Subscriber listener : subscribers){
             listener.update(notification);
         }
