@@ -20,7 +20,9 @@ public class ActionManager {
     private PomeranjeAction pomeranjeAction;
     private SelekcijaAction selekcijaAction;
     private VezaAction vezaAction;
-    private ZoomAction zoomAction;
+    private ZoomInAction zoomInAction;
+    private ZoomOutAction zoomOutAction;
+    private SettingsAction settingsAction;
 
     public ActionManager(){
 
@@ -43,7 +45,9 @@ public class ActionManager {
         pomeranjeAction = new PomeranjeAction();
         selekcijaAction = new SelekcijaAction();
         vezaAction = new VezaAction();
-        zoomAction = new ZoomAction();
+        zoomOutAction = new ZoomOutAction();
+        zoomInAction = new ZoomInAction();
+        settingsAction = new SettingsAction();
 
     }
 }

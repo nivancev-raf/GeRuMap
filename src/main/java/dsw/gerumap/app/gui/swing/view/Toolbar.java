@@ -5,7 +5,6 @@ import javax.swing.JToolBar;
 public class Toolbar extends JToolBar {
 
 
-
     public Toolbar() {
         super(HORIZONTAL);
         setFloatable(false);
@@ -16,6 +15,5 @@ public class Toolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getAuthorAction());
         add(MainFrame.getInstance().getActionManager().getExitAction());
     }
-
 }
 

@@ -5,7 +5,6 @@ import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.elements.MindMapModel;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -8,11 +8,6 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 
-import static dsw.gerumap.app.gui.swing.view.MyMenuBar.CENTER_ALIGNMENT;
-import static java.awt.Component.BOTTOM_ALIGNMENT;
-import static java.awt.Component.TOP_ALIGNMENT;
-
-
 public class InfoAction extends AbstractGeRuMapAction{
 
     static JFrame f;

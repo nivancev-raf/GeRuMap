@@ -11,7 +11,7 @@ public class BrisanjeAction extends AbstractGeRuMapAction {
     public BrisanjeAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/author.png"));
+        putValue(SMALL_ICON, loadIcon("/images/brisanje.png"));
         putValue(NAME, "Delete");
         putValue(SHORT_DESCRIPTION, "Delete ");
     }

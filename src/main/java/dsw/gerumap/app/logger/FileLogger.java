@@ -1,15 +1,10 @@
 package dsw.gerumap.app.logger;
 
-import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.core.observer.Subscriber;
 
+import dsw.gerumap.app.core.observer.Subscriber;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

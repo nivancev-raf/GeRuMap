@@ -12,7 +12,7 @@ public class VezaAction extends AbstractGeRuMapAction {
     public VezaAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/author.png"));
+        putValue(SMALL_ICON, loadIcon("/images/linija.png"));
         putValue(NAME, "Veza");
         putValue(SHORT_DESCRIPTION, "Veza");
     }

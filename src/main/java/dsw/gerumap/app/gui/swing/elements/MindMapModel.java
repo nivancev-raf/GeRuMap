@@ -1,65 +1,81 @@
 package dsw.gerumap.app.gui.swing.elements;
 
-import dsw.gerumap.app.gui.swing.controller.listeners.UpdateEvent;
-import dsw.gerumap.app.gui.swing.controller.listeners.UpdateListener;
+import dsw.gerumap.app.core.observer.Publisher;
+import dsw.gerumap.app.core.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.view.painters.DevicePainter;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.swing.event.EventListenerList;
+
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 @Setter
 @Getter
-public class MindMapModel { // klasa koja cuva sve elemente sa mape
+public class MindMapModel implements Publisher { // klasa koja cuva sve elemente sa mape
 
-    protected ArrayList<DiagramDevice> mapElements = new ArrayList();
-    EventListenerList listenerList;
-    UpdateEvent updateEvent;
+    protected ArrayList<DevicePainter> mapElements;
+    protected ArrayList<DevicePainter> veze;
+    protected ArrayList<Rectangle2D> rectangle;
+    protected ArrayList<DevicePainter> selectedElements;
+    protected ArrayList<Subscriber> subscribers;
 
     public MindMapModel(){
-        this.listenerList = new EventListenerList();
-        this.updateEvent = null;
-    }
-    public void addUpdateListener(UpdateListener l) {
-        this.listenerList.add(UpdateListener.class, l);
-    }
-    public void addDiagramElements(DiagramDevice device) {
-        device.setStrokeWidth(1.0F);
-        this.mapElements.add(device);
-        this.fireUpdatePerformed(); // pozivamo repaint
+        mapElements = new ArrayList();
+        veze = new ArrayList();
+        rectangle = new ArrayList<>();
+        selectedElements = new ArrayList<>();
+        subscribers = new ArrayList<>();
     }
 
-    public int getElementIndex(){
-        for (DiagramDevice e : mapElements){
-            // ako je e selektovan mora da vrati njegov index
+    public void addSelectedElement(DevicePainter devicePainter){
+        if (!selectedElements.contains(devicePainter)){
+            this.selectedElements.add(devicePainter);
+            this.notifySubscribers(null);
         }
-
-        return 0;
     }
 
+    public void addDiagramElements(DevicePainter device) {
+        device.getDiagramDevice().setStroke(1.0F);
+        this.mapElements.add(device);
+        this.notifySubscribers(null); // pozivamo repaint
+    }
 
-    public Iterator<DiagramDevice> getDeviceIterator() {
+    public void addRectangle(Rectangle2D rectangle2D){
+        this.rectangle.add(rectangle2D);
+        this.notifySubscribers(null);
+    }
+
+    public void addVeza(DevicePainter device){
+        this.veze.add(device);
+        this.notifySubscribers(null);
+    }
+
+    public Iterator<DevicePainter> getDeviceIterator() {
         return this.mapElements.iterator();
     }
-
-
-    /**
-     * Javljamo svim listenerima da se dogadjaj desio
-     */
-    public void fireUpdatePerformed() {
-        Object[] listeners = this.listenerList.getListenerList();
-
-        for(int i = listeners.length - 1; i >= 0; --i) {
-            if (listeners[i] == UpdateListener.class) {
-                if (this.updateEvent == null) {
-                    this.updateEvent = new UpdateEvent(this);
-                }
-
-                ((UpdateListener)listeners[i + 1]).updatePerformed(this.updateEvent);
-            }
-        }
-
+    public Iterator<DevicePainter> getVezeIterator() {
+        return this.veze.iterator();
+    }
+    public Iterator<Rectangle2D> getRectangleIterator() {
+        return this.rectangle.iterator();
     }
 
 
+    @Override
+    public void addSubscriber(Subscriber subscriber) {
+        subscribers.add(subscriber);
+    }
+
+    @Override
+    public void removeSubscriber(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void notifySubscribers(Object notification) {
+        for (Subscriber subs : subscribers){
+            subs.update(notification);
+        }
+    }
 }

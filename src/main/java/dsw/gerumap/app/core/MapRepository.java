@@ -12,9 +12,4 @@ public interface MapRepository{
     void addChild(MapNodeComposite parent, MapNode child);
 
     NodeFactory getInstance(MapNode mapNode);
-
-
-
-    
-
 }

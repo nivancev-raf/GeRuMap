@@ -7,9 +7,6 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
@@ -35,8 +32,6 @@ public class MapTreeSelectionListener implements TreeSelectionListener, Publishe
         if (treeItemSelected.getMapNode() instanceof MindMap) {
             notifySubscribers(treeItemSelected.getMapNode().getParent());
         }
-
-
     }
 
     @Override

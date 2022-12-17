@@ -4,7 +4,6 @@ package dsw.gerumap.app;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.Gui;
 import dsw.gerumap.app.core.MapRepository;
-import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.SwingGui;
 import dsw.gerumap.app.gui.swing.mapRepository.MapRepositoryImplementation;
 import dsw.gerumap.app.logger.ConsoleLogger;

@@ -1,8 +1,5 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
-
-
-
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.core.observer.Publisher;
 import dsw.gerumap.app.core.observer.Subscriber;
@@ -11,7 +8,6 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.logger.EventType;
-
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;

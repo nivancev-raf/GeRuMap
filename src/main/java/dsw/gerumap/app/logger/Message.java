@@ -9,7 +9,6 @@ public class Message {
 
     String text;
     EventType type;
-
     public Message(String text, EventType type) {
         this.text = text;
         this.type = type;

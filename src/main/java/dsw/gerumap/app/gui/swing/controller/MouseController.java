@@ -1,17 +1,12 @@
 package dsw.gerumap.app.gui.swing.controller;
 
-import com.sun.tools.javac.Main;
-import dsw.gerumap.app.gui.swing.elements.DiagramDevice;
+
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.state.State;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
-import dsw.gerumap.app.gui.swing.view.MapView;
-
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.GeneralPath;
-import java.util.ArrayList;
+
 
 public class MouseController implements MouseListener {
 
@@ -38,7 +33,8 @@ public class MouseController implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        State current = MainFrame.getInstance().getProjectView().getStateManager().getCurrent();
+        current.misOtpsuten(e, this.map);
     }
 
     @Override

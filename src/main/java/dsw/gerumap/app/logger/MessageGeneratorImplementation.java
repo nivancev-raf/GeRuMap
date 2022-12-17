@@ -2,7 +2,6 @@ package dsw.gerumap.app.logger;
 
 import dsw.gerumap.app.core.observer.Publisher;
 import dsw.gerumap.app.core.observer.Subscriber;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,6 @@ public class MessageGeneratorImplementation implements MessageGenerator, Publish
 
     List<Subscriber> subscribers;
     Message message;
-
-
 
     public MessageGeneratorImplementation(){
         subscribers = new ArrayList<>();
@@ -36,6 +33,15 @@ public class MessageGeneratorImplementation implements MessageGenerator, Publish
             notifySubscribers(message);
         } else if (type.equals(EventType.NON_SELECTED_STATE)){
             message = new Message("First select the item with 'select button' in pallete", type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.CANNOT_BE_USED)){
+            message = new Message("Settings can be used when there is selected element",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.NUMBERS_ONLY)){
+            message = new Message("Type only numbers",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.OUT_OF_BOUNDS)){
+            message = new Message("Insert under 15 characters",type);
             notifySubscribers(message);
         }
     }

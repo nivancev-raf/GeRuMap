@@ -12,7 +12,7 @@ public class PomeranjeAction extends AbstractGeRuMapAction {
     public PomeranjeAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/author.png"));
+        putValue(SMALL_ICON, loadIcon("/images/pomeri.png"));
         putValue(NAME, "Pomeri");
         putValue(SHORT_DESCRIPTION, "Pomeri");
     }

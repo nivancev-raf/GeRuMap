@@ -5,14 +5,11 @@ import dsw.gerumap.app.core.Gui;
 import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.logger.Message;
-import dsw.gerumap.app.logger.MessageGeneratorImplementation;
-
 import javax.swing.*;
 
 public class SwingGui implements Gui,Subscriber {
 
     private MainFrame instance;
-
 
     public SwingGui() {
     }
@@ -28,6 +25,5 @@ public class SwingGui implements Gui,Subscriber {
     public void update(Object notification) {
         Message msg = (Message) notification;
         JOptionPane.showMessageDialog(MainFrame.getInstance(), msg);
-
     }
 }

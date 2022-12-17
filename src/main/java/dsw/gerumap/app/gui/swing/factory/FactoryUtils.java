@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.factory;
 
-import dsw.gerumap.app.core.MapRepository;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
@@ -11,7 +10,6 @@ import lombok.Setter;
 @Getter
 public class FactoryUtils {
     private static FactoryUtils instance;
-
     private static NodeFactory elementFactory;
     private static NodeFactory projectFactory;
     private static NodeFactory projectExplorerFactory;

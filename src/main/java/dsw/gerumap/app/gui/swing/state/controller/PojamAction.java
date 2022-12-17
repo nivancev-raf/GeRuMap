@@ -12,7 +12,7 @@ public class PojamAction extends AbstractGeRuMapAction {
     public PojamAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/author.png"));
+        putValue(SMALL_ICON, loadIcon("/images/elipsa.png"));
         putValue(NAME, "Pojam");
         putValue(SHORT_DESCRIPTION, "Pojam");
     }
@@ -20,5 +20,6 @@ public class PojamAction extends AbstractGeRuMapAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getProjectView().startPojamState();
+
     }
 }

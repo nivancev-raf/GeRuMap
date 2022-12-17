@@ -12,7 +12,7 @@ public class SelekcijaAction extends AbstractGeRuMapAction {
     public SelekcijaAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_T, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/author.png"));
+        putValue(SMALL_ICON, loadIcon("/images/select.png"));
         putValue(NAME, "Select");
         putValue(SHORT_DESCRIPTION, "Select");
     }

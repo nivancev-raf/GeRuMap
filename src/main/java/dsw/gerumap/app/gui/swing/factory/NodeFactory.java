@@ -9,7 +9,6 @@ import java.util.Random;
 public abstract class NodeFactory  {
 
     public MapNode getNode(MapNode mapNode){
-
         MapNode n = createNode(mapNode.getName(),mapNode);
         n.setParent(mapNode.getParent());
         if (mapNode instanceof ProjectExplorer){

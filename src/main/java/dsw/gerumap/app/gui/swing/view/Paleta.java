@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.AppCore;
 
 import javax.swing.*;
 
@@ -18,9 +17,12 @@ public class Paleta extends JToolBar {
         addSeparator();
         add(MainFrame.getInstance().getActionManager().getSelekcijaAction());
         addSeparator();
-        add(MainFrame.getInstance().getActionManager().getZoomAction());
+        add(MainFrame.getInstance().getActionManager().getZoomInAction());
         addSeparator();
-        // fali settings koji nije state
-        //add(MainFrame.getInstance().getActionManager().);
+        add(MainFrame.getInstance().getActionManager().getZoomOutAction());
+        addSeparator();
+        add(MainFrame.getInstance().getActionManager().getSettingsAction());
+        addSeparator();
+
     }
 }

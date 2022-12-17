@@ -9,7 +9,8 @@ public class StateManager {
     private PomeranjeState pomeranjeState;
     private SelekcijaState selekcijaState;
     private VezaState vezaState;
-    private ZoomState zoomState;
+    private ZoomInState zoomInState;
+    private ZoomOutState zoomOutState;
 
     public StateManager() {
         initStates();
@@ -21,8 +22,8 @@ public class StateManager {
         pomeranjeState = new PomeranjeState();
         selekcijaState = new SelekcijaState();
         vezaState = new VezaState();
-        zoomState = new ZoomState();
-
+        zoomInState = new ZoomInState();
+        zoomOutState = new ZoomOutState();
 
         currentState = pojamState; // defaultno stanje
     }
@@ -47,12 +48,14 @@ public class StateManager {
         currentState = selekcijaState;
     }
 
-
     public void setVezaState() {
         currentState = vezaState;
     }
 
-    public void setZoomState() {
-        currentState = zoomState;
+    public void setZoomInState() {
+        currentState = zoomInState;
+    }
+    public void setZoomOutState() {
+        currentState = zoomOutState;
     }
 }

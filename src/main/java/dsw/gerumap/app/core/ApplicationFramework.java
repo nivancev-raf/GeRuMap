@@ -4,7 +4,6 @@ import dsw.gerumap.app.logger.ConsoleLogger;
 import dsw.gerumap.app.logger.FileLogger;
 import dsw.gerumap.app.logger.MessageGenerator;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter

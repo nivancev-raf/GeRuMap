@@ -1,74 +1,64 @@
 package dsw.gerumap.app.gui.swing.view.painters;
 
-import dsw.gerumap.app.gui.swing.elements.DiagramDevice;
-import dsw.gerumap.app.gui.swing.elements.DiagramElement;
-import dsw.gerumap.app.gui.swing.elements.ElipseElement;
-import dsw.gerumap.app.gui.swing.elements.SelectedElement;
-import dsw.gerumap.app.gui.swing.state.model.SelekcijaState;
+import dsw.gerumap.app.gui.swing.elements.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.awt.*;
-import java.awt.font.FontRenderContext;
+
 
 @Setter
 @Getter
 public class DevicePainter extends ElementPainter{
 
     protected Shape shape;
-    SelectedElement rectangle;
+    protected DiagramDevice diagramDevice; // painter ima referencu na diagramDevice
 
-    public DevicePainter(DiagramElement element) {
-        super(element);
+    public DevicePainter(DiagramDevice device) {
+        super();
+        this.diagramDevice = device;
     }
 
     @Override
-    public void paint(Graphics2D g, DiagramElement element) {
-
-        DiagramDevice device = (DiagramDevice)element;
+    public void paint(Graphics2D g, DevicePainter device) {
 
         if (this instanceof ElipsePainter) {
-            ((ElipsePainter)this).reposition(device.getPosition());
+            ((ElipsePainter)this).reposition(device.getDiagramDevice().getPosition());
         }
+        if (this instanceof LinePainter){
+            ((LinePainter)this).repositionLine(device.getDiagramDevice().getPosition());
+            g.setPaint(device.getDiagramDevice().getPaint());
+            g.setStroke(new BasicStroke((((LinePainter) this).getLineStroke())));
+        }
+
+        if (device.getDiagramDevice() instanceof ElipseElement) {
             g.setPaint(Color.RED);
-            g.setStroke(element.getStroke());
-
-        if (element instanceof ElipseElement) {
-            g.setStroke(new BasicStroke(element.getStrokeWidth()));
+            g.setStroke(new BasicStroke(device.getDiagramDevice().getStroke()));
         }
 
-        if (this instanceof SelectedPainter){
-            g.setPaint(new Color(0,0, 255));
-            g.setStroke(new BasicStroke(1.0F, 0, 2, 0.0F, new float[]{2.0F}, 0.0F));
+        if (device.getDiagramDevice() instanceof SelectedElement){
+            g.setStroke(new BasicStroke());
         }
 
             g.draw(getShape()); // crtamo objekat
-            g.setPaint(element.getPaint());
+            g.setPaint(device.getDiagramDevice().getPaint());
             g.fill(getShape());
 
-            if (element instanceof ElipseElement){ // ovo je za tekst unutra
-            g.setPaint(Color.BLACK);
-            //DiagramDevice device=(DiagramDevice )element;
-            g.drawString(device.getName(), (int)device.getPosition().getX() - 14, // ovde treba namestiti da tekst bude na centru
-                    (int)device.getPosition().getY() + 1);
-        }
-
-            /*
-            if (element instanceof DiagramDevice){ // ovo je za tekst unutra
-
+            if (device.getDiagramDevice() instanceof ElipseElement){ // ovo je za tekst unutra
                 g.setPaint(Color.BLACK);
-                //DiagramDevice device=(DiagramDevice )element;
-                g.drawString(device.getName(), (int)device.getPosition().getX() - 14, // ovde treba namestiti da tekst bude na centru
-                        (int)device.getPosition().getY() + 1);
+                int x = (int)getDiagramDevice().getPosition().getX();
+                x -= g.getFontMetrics().stringWidth(getDiagramDevice().getName()) / 2;
+                int y = (int)getDiagramDevice().getPosition().getY();
+                y += 5;
+                g.drawString(getDiagramDevice().getName(), x, y);
             }
-            */
-
     }
 
     @Override
     public boolean elementAt(Point pos){
-        return getShape().contains(pos);
+        return getShape().getBounds().contains(pos);
     }
 
-
+    public DiagramDevice getDiagramDevice() {
+        return diagramDevice;
+    }
 }

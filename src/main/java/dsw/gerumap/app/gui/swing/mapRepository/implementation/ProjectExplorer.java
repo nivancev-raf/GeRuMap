@@ -4,7 +4,6 @@ package dsw.gerumap.app.gui.swing.mapRepository.implementation;
 import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 
 public class ProjectExplorer extends MapNodeComposite {

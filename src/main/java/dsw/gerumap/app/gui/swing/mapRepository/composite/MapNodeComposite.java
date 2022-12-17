@@ -24,16 +24,6 @@ public abstract class MapNodeComposite extends MapNode{
 
     public abstract void addChild(MapNode child);
     public abstract void removeChild(MapNode child);
-
-    public MapNode getChildByName(String name){
-        for(MapNode child:this.getChildren()){
-            if(name.equals(child.getName())){
-                return child;
-            }
-        }
-        return null;
-    }
-
     public List<MapNode> getChildren() {
         return children;
     }

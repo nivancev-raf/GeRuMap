@@ -8,7 +8,6 @@ import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.logger.EventType;
 import dsw.gerumap.app.logger.MessageGeneratorImplementation;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

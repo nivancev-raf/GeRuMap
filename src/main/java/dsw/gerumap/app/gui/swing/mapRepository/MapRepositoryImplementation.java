@@ -11,7 +11,6 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 public class MapRepositoryImplementation implements MapRepository {
     private ProjectExplorer projectExplorer;
 
-
     public MapRepositoryImplementation() {
         projectExplorer = new ProjectExplorer("My Project Explorer");
     }
