@@ -4,6 +4,7 @@ import dsw.gerumap.app.gui.swing.elements.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 
 @Setter
@@ -55,6 +56,10 @@ public class DevicePainter extends ElementPainter{
 
     @Override
     public boolean elementAt(Point pos){
+        if (shape instanceof Line2D){
+            boolean b = ((Line2D) shape).ptSegDist(pos) < 8;
+            return b;
+        }
         return getShape().getBounds().contains(pos);
     }
 

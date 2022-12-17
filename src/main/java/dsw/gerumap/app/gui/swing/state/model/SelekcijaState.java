@@ -39,6 +39,7 @@ public class SelekcijaState extends State {
                 //deselect
                 LinePainter line = (LinePainter) map.getModel().getVeze().get(found);
                 map.getModel().getVeze().get(found).getDiagramDevice().setSelected(false);
+                line.getDiagramDevice().setPaint(line.getOldColor());
                 map.getModel().notifySubscribers(null);
                 found = -1;
             }
