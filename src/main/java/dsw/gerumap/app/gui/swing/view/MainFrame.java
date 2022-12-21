@@ -54,6 +54,7 @@ public class MainFrame extends JFrame{
 
         projectView = new ProjectView();
 
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 new JScrollPane(projectExplorer),
                 new JScrollPane(projectView));

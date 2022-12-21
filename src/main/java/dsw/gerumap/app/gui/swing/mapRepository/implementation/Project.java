@@ -7,24 +7,27 @@ import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
+@ToString(callSuper = true)
 
 public class Project extends MapNodeComposite {
-    private String ime;
+    //private String ime; polje sa imenom vec imamo u mapNode
     private String autor;
-    private String putanja;
+    private String filePath;
+    protected boolean changed = true;
 
-    private List<Subscriber> subs;
+    //private List<Subscriber> subs;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
-        subs = new ArrayList<>();
-        addSubscriber(MainFrame.getInstance().getProjectView());
+        //subs = new ArrayList<>();
+        //addSubscriber(MainFrame.getInstance().getProjectView());
     }
 
 
@@ -60,16 +63,22 @@ public class Project extends MapNodeComposite {
 
     @Override
     public void addSubscriber(Subscriber subscriber) {
-        subs.add(subscriber);
+        //subs.add(subscriber);
     }
 
     @Override
     public void removeSubscriber(Subscriber subscriber) {
-        subs.remove(subscriber);
+        //subs.remove(subscriber);
     }
 
     @Override
     public void notifySubscribers(Object notification) {
         MainFrame.getInstance().getProjectView().update(notification);
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        changed = true;
     }
 }

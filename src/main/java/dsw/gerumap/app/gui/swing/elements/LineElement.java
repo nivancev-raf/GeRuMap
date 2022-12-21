@@ -12,7 +12,7 @@ public class LineElement extends DiagramDevice{
     DevicePainter device1;
     DevicePainter device2;
 
-    public LineElement(Point position, Dimension size, Paint paint, float stroke) {
+    public LineElement(Point position, Dimension size, float[] paint, float stroke) {
         super(position, size, paint, stroke);
     }
 }

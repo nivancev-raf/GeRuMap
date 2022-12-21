@@ -14,7 +14,7 @@ public abstract class DiagramDevice extends DiagramElement {
     protected String name;
 
 
-    public DiagramDevice(Point position, Dimension size, Paint paint, float stroke) {
+    public DiagramDevice(Point position, Dimension size, float[] paint, float stroke) {
         super(paint, stroke);
         this.size = size;
         this.position = position;

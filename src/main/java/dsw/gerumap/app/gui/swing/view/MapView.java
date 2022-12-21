@@ -16,6 +16,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.geom.*;
+import java.lang.reflect.Array;
 import java.util.Iterator;
 
 @Getter
@@ -77,11 +78,15 @@ public class MapView extends JPanel implements Subscriber {
             if (((LineElement)line.getDiagramDevice()).getDevice1() != null && ((LineElement)line.getDiagramDevice()).getDevice2() != null){
                 line.setOdPojma(((LineElement)line.getDiagramDevice()).getDevice1().getDiagramDevice().getPosition());
                 line.setDoPojma(((LineElement)line.getDiagramDevice()).getDevice2().getDiagramDevice().getPosition());
-                oldColor = line.getOldColor();
+                //oldColor = line.getOldColor();
+                float roc = Array.getFloat(line.getOldColor(), 0);
+                float goc = Array.getFloat(line.getOldColor(), 1);
+                float boc = Array.getFloat(line.getOldColor(), 2);
+                //oldColor = new Color(roc,goc, boc);
                 if (line.getDiagramDevice().isSelected()){
-                    line.getDiagramDevice().setPaint(Color.CYAN); // kada je selektovana
+                    line.getDiagramDevice().setPaint(new float[]{0,255,255}); // kada je selektovana
                 }else{
-                    line.getDiagramDevice().setPaint(oldColor);
+                    line.getDiagramDevice().setPaint(new float[]{roc, goc, boc});
                 }
             }
             line.paint(g2, line);
@@ -92,7 +97,7 @@ public class MapView extends JPanel implements Subscriber {
         while(it.hasNext()){
             DevicePainter d = it.next();
             if (d.getDiagramDevice().isSelected()){
-                SelectedElement selectedElement = new SelectedElement(d.getDiagramDevice().getPosition(), d.getDiagramDevice().getSize(), new Color(1f,0f,0f,.5f ), 2.0F);
+                SelectedElement selectedElement = new SelectedElement(d.getDiagramDevice().getPosition(), d.getDiagramDevice().getSize(), new float[]{1f,0f,0f,.5f}, 2.0F);
                 SelectedPainter selectedPainter = new SelectedPainter(selectedElement);
                 selectedPainter.paint(g2, selectedPainter);
             }

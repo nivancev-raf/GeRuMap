@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import java.awt.*;
 import java.awt.geom.Line2D;
+import java.lang.reflect.Array;
 
 
 @Setter
@@ -27,7 +28,12 @@ public class DevicePainter extends ElementPainter{
         }
         if (this instanceof LinePainter){
             ((LinePainter)this).repositionLine(device.getDiagramDevice().getPosition());
-            g.setPaint(device.getDiagramDevice().getPaint());
+            // ovde treba da se uzme String paint i da se parsuje u int
+            //g.setPaint(device.getDiagramDevice().getPaint());
+            float r = Array.getFloat(device.getDiagramDevice().getPaint(), 0);
+            float g2 = Array.getFloat(device.getDiagramDevice().getPaint(), 1);
+            float b = Array.getFloat(device.getDiagramDevice().getPaint(), 2);
+            g.setPaint(new Color((int)r, (int)g2, (int)b));
             g.setStroke(new BasicStroke((((LinePainter) this).getLineStroke())));
         }
 
@@ -37,11 +43,24 @@ public class DevicePainter extends ElementPainter{
         }
 
         if (device.getDiagramDevice() instanceof SelectedElement){
+            float r = Array.getFloat(device.getDiagramDevice().getPaint(), 0);
+            float g2 = Array.getFloat(device.getDiagramDevice().getPaint(), 1);
+            float b = Array.getFloat(device.getDiagramDevice().getPaint(), 2);
+            float a = Array.getFloat(device.getDiagramDevice().getPaint(), 3);
+            g.setPaint(new Color(r, g2, b, a));
             g.setStroke(new BasicStroke());
         }
 
             g.draw(getShape()); // crtamo objekat
-            g.setPaint(device.getDiagramDevice().getPaint());
+
+            if (device.getDiagramDevice().getPaint().length == 3){
+                float r = Array.getFloat(device.getDiagramDevice().getPaint(), 0);
+                float g2 = Array.getFloat(device.getDiagramDevice().getPaint(), 1);
+                float b = Array.getFloat(device.getDiagramDevice().getPaint(), 2);
+
+                g.setPaint(new Color((int)r, (int)g2, (int)b));
+            }
+
             g.fill(getShape());
 
             if (device.getDiagramDevice() instanceof ElipseElement){ // ovo je za tekst unutra

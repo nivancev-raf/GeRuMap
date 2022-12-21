@@ -170,7 +170,11 @@ public class SettingsAction extends AbstractGeRuMapAction {
                     color = JColorChooser.showDialog(null, "Izaberite boju", Color.black);
                     panelColor.setBackground(color);
                     for(int i = 0; i<map.getMap().getModel().getSelectedElements().size(); i++){
-                        map.getMap().getModel().getSelectedElements().get(i).getDiagramDevice().setPaint(color);
+                        int r = color.getRed();
+                        int g = color.getGreen();
+                        int b = color.getBlue();
+
+                        map.getMap().getModel().getSelectedElements().get(i).getDiagramDevice().setPaint(new float[]{r,g,b});
                     }
                 }
             }
@@ -298,7 +302,10 @@ public class SettingsAction extends AbstractGeRuMapAction {
                         if (e.getSource() == colorButton) {
                             LinePainter line = (LinePainter) map.getMap().getModel().getVeze().get(finalI);
                             color = JColorChooser.showDialog(null, "Izaberite boju", Color.black);
-                            line.setOldColor(color);
+                            float r = color.getRed();
+                            float g = color.getGreen();
+                            float b = color.getBlue();
+                            line.setOldColor(new float[]{r,g,b});
                             line.getDiagramDevice().setSelected(false);
                             map.getMap().getModel().notifySubscribers(null);
                             panelColor.setBackground(color);
@@ -449,7 +456,10 @@ public class SettingsAction extends AbstractGeRuMapAction {
                             JColorChooser colorChooser = new JColorChooser();
                             color = JColorChooser.showDialog(null, "Izaberite boju", Color.black);
                             panelColor.setBackground(color);
-                            map.getMap().getModel().getMapElements().get(finalI).getDiagramDevice().setPaint(color);
+                            int r = color.getRed();
+                            int g = color.getGreen();
+                            int b = color.getBlue();
+                            map.getMap().getModel().getMapElements().get(finalI).getDiagramDevice().setPaint(new float[]{r,g,b});
                         }
                     }
                 });

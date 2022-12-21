@@ -12,9 +12,9 @@ public class LinePainter extends DevicePainter{
     Point odPojma;
     Point doPojma;
     float lineStroke;
-    Paint oldColor;
+    float[] oldColor;
 
-    public LinePainter(DiagramDevice device, Point from, Point to,float lineStroke, Paint oldColor) {
+    public LinePainter(DiagramDevice device, Point from, Point to,float lineStroke, float[] oldColor) {
         super(device);
         this.odPojma = from;
         this.doPojma = to;

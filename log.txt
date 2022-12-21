@@ -51,3 +51,6 @@ ERROR: 19.11.2022. 19:54:11 You can't add author here naziv greske: ADD AUTHOR E
 ERROR: 19.11.2022. 19:54:13 You can't remove project explorer naziv greske: REMOVE PROJECT EXPLORER
 ERROR: 17.12.2022. 21:24:02 Type only numbers naziv greske: NUMBERS ONLY
 ERROR: 17.12.2022. 21:36:37 You can't remove project explorer naziv greske: REMOVE PROJECT EXPLORER
+ERROR: 21.12.2022. 01:31:44 Action can't be perfrormed because selected is null naziv greske: NON SELECTED
+ERROR: 21.12.2022. 13:18:27 You can't remove project explorer naziv greske: REMOVE PROJECT EXPLORER
+ERROR: 21.12.2022. 15:48:09 Action can't be perfrormed because selected is null naziv greske: NON SELECTED

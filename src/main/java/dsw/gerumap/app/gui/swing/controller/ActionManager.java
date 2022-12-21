@@ -23,6 +23,8 @@ public class ActionManager {
     private ZoomInAction zoomInAction;
     private ZoomOutAction zoomOutAction;
     private SettingsAction settingsAction;
+    private OpenAction openAction;
+    private SaveAction saveAction;
 
     public ActionManager(){
 
@@ -48,6 +50,8 @@ public class ActionManager {
         zoomOutAction = new ZoomOutAction();
         zoomInAction = new ZoomInAction();
         settingsAction = new SettingsAction();
+        openAction = new OpenAction();
+        saveAction = new SaveAction();
 
     }
 }

@@ -1,13 +1,19 @@
 package dsw.gerumap.app.gui.swing.view;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.core.MapRepository;
 import dsw.gerumap.app.core.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.factory.NodeFactory;
+import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.state.StateManager;
 import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import lombok.Getter;
 import lombok.Setter;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +27,14 @@ public class ProjectView extends JPanel implements Subscriber{
 
     public ProjectView(){
         initialise();
+        // u konstruktoru view treba doci do metode addSubcriber u Projectu
+//        List<MapNode> mapNodes = ApplicationFramework.getInstance().getMapRepository().getProjectExplorer().getChildren();
+//        for (MapNode mapNode : mapNodes){
+//            if (mapNode instanceof Project){
+//                mapNode.addSubscriber(this);
+//                break;
+//            }
+//        }
     }
 
 

@@ -32,8 +32,8 @@ public class VezaState extends State {
                 if (map.getModel().getMapElements().get(i).elementAt(generatePoint(e.getPoint()))) {
                     from = map.getModel().getMapElements().get(i).getDiagramDevice().getPosition();
                     to = from; // crta tacku
-                    line = new LineElement(e.getPoint(), new Dimension(50, 20), Color.black, 1.0F); // podesavanje same linije
-                    linePainter = new LinePainter(line, from, to,2, Color.black);
+                    line = new LineElement(e.getPoint(), new Dimension(50, 20),  new float[]{0, 0, 0}, 1.0F); // podesavanje same linije
+                    linePainter = new LinePainter(line, from, to,2, new float[]{0,0,0});
                     line.setDevice1(map.getModel().getMapElements().get(i));
                     map.getModel().addVeza(linePainter);
                     break;
@@ -202,7 +202,10 @@ public class VezaState extends State {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (color != Color.black){
-                    linePainter.setOldColor(color);
+                    float r = color.getRed();
+                    float g = color.getGreen();
+                    float b = color.getBlue();
+                    linePainter.setOldColor(new float[]{r,g,b});
                 }
 
                 String noviStroke = textField.getText();

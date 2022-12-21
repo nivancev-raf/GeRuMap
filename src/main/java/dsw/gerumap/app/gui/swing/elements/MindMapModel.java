@@ -1,5 +1,7 @@
 package dsw.gerumap.app.gui.swing.elements;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.JsonAdapter;
 import dsw.gerumap.app.core.observer.Publisher;
 import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.view.painters.DevicePainter;
@@ -14,11 +16,12 @@ import java.util.Iterator;
 @Getter
 public class MindMapModel implements Publisher { // klasa koja cuva sve elemente sa mape
 
-    protected ArrayList<DevicePainter> mapElements;
+    protected ArrayList<DevicePainter> mapElements; // elipse
     protected ArrayList<DevicePainter> veze;
-    protected ArrayList<Rectangle2D> rectangle;
-    protected ArrayList<DevicePainter> selectedElements;
-    protected ArrayList<Subscriber> subscribers;
+    protected transient ArrayList<Rectangle2D> rectangle;
+    protected transient ArrayList<DevicePainter> selectedElements;
+
+    protected transient ArrayList<Subscriber> subscribers;
 
     public MindMapModel(){
         mapElements = new ArrayList();

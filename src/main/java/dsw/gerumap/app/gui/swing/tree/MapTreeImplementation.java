@@ -9,6 +9,7 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeModel;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.logger.EventType;
@@ -16,6 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import java.rmi.MarshalledObject;
 
 
 @Getter
@@ -24,12 +26,12 @@ import javax.swing.tree.DefaultTreeModel;
 public class MapTreeImplementation implements MapTree {
 
     private MapTreeView treeView;
-    private DefaultTreeModel treeModel;
+    private MapTreeModel treeModel;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
         MapTreeItem root = new MapTreeItem(projectExplorer);
-        treeModel = new DefaultTreeModel(root);
+        treeModel = new MapTreeModel(root);
         treeView = new MapTreeView(treeModel);
         return treeView;
 
@@ -93,6 +95,32 @@ public class MapTreeImplementation implements MapTree {
     @Override
     public MapTreeItem getSelectedNode() {
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public void loadProject(MapNode node) {
+
+        if (node instanceof Project){
+            MapTreeItem loadedProject = new MapTreeItem(node);
+            treeModel.getRoot().add(loadedProject);
+
+            MapNodeComposite mapNode = (MapNodeComposite) treeModel.getRoot().getMapNode();
+            mapNode.addChild(node);
+            treeView.expandPath(treeView.getSelectionPath());
+            SwingUtilities.updateComponentTreeUI(treeView);
+
+            if (!((Project) node).getChildren().isEmpty()){
+
+                for (int i = 0; i < ((Project) node).getChildren().size(); i++){
+                    ((Project) node).addChild(((Project) node).getChildren().get(i));
+                }
+            }
+        }
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
+
+
+
     }
 
     private MapNode createChild(MapNode parent) {

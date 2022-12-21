@@ -9,12 +9,13 @@ import java.awt.*;
 @Setter
 public abstract class DiagramElement { // model
 
-    protected Paint paint;
+    protected float[] paint;
     protected float stroke;
     protected boolean selected;
 
 
-    public DiagramElement(Paint paint, float stroke) {
+
+    public DiagramElement(float[] paint, float stroke) {
         this.stroke = stroke;
         this.paint = paint;
     }

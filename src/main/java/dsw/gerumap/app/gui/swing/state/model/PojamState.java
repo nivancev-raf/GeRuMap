@@ -20,7 +20,7 @@ public class PojamState extends State {
     @Override
     public void misKliknut(MouseEvent e, MindMap map) {
         super.misKliknut(e, map);
-        elipse = new ElipseElement(generatePoint(e.getPoint()), new Dimension(120, 50),new Color(188, 246, 121), 2.0F);
+        elipse = new ElipseElement(generatePoint(e.getPoint()), new Dimension(120, 50), new float[]{188, 246, 121}, 2.0F);
         if(postavljanjeText(map)){
             map.getModel().addDiagramElements(new ElipsePainter(elipse));
         }
