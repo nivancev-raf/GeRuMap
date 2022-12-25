@@ -4,10 +4,13 @@ package dsw.gerumap.app.gui.swing.tree.view;
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeCellEditor;
 import dsw.gerumap.app.gui.swing.tree.controller.MapTreeSelectionListener;
 import dsw.gerumap.app.gui.swing.tree.controller.MouseTreeListener;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
-
+@Getter
+@Setter
 public class MapTreeView extends JTree {
 
 

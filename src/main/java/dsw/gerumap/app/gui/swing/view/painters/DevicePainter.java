@@ -13,6 +13,7 @@ import java.lang.reflect.Array;
 public class DevicePainter extends ElementPainter{
 
     protected Shape shape;
+
     protected DiagramDevice diagramDevice; // painter ima referencu na diagramDevice
 
     public DevicePainter(DiagramDevice device) {
@@ -22,7 +23,6 @@ public class DevicePainter extends ElementPainter{
 
     @Override
     public void paint(Graphics2D g, DevicePainter device) {
-
         if (this instanceof ElipsePainter) {
             ((ElipsePainter)this).reposition(device.getDiagramDevice().getPosition());
         }

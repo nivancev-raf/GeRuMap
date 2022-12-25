@@ -42,6 +42,7 @@ public class MapView extends JPanel implements Subscriber {
         addMouseMotionListener(new MouseDragController(map)); //mouse motion event is generated when the mouse is moved or dragged
         this.setPreferredSize(new Dimension(500, 400));
 
+
     }
 
 
@@ -50,11 +51,13 @@ public class MapView extends JPanel implements Subscriber {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+//        if (!map.getModel().ready) return;
         Graphics2D g2 = (Graphics2D) g;
         AffineTransform affineTransform = AffineTransform.getTranslateInstance(translateX, translateY);
         affineTransform.scale(scaling, scaling);
         g2.transform(affineTransform);
 
+        //System.out.println(MainFrame.getInstance().getProjectView().getTabbedPane().getMapView());
 
         //omogucava providnost elemenata prilikom njihovog preklapanja
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
@@ -102,6 +105,7 @@ public class MapView extends JPanel implements Subscriber {
                 selectedPainter.paint(g2, selectedPainter);
             }
             d.paint(g2, d);
+            //System.out.println(d.getShape());
         }
 
     }

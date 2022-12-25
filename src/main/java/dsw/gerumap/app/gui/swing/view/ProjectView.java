@@ -9,9 +9,11 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.state.StateManager;
 import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import lombok.Getter;
 import lombok.Setter;
 import javax.swing.*;
+import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +91,9 @@ public class ProjectView extends JPanel implements Subscriber{
             if (tabbedPane != null){
                 tabbedPane.setTabs(p.getChildren());
             }
+
             label1.setText(p.getName());
             label2.setText(p.getAutor());
+
     }
 }

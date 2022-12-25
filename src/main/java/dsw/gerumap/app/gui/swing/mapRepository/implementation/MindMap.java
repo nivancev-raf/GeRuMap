@@ -5,6 +5,7 @@ import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.elements.MindMapModel;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNodeComposite;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,13 @@ public class MindMap extends MapNodeComposite {
     public MindMap(String name, MapNode parent) {
         super(name, parent);
     }
+
+    @Override
+    public MapTreeItem getMapTreeItem() {
+        setMapTreeItem(new MapTreeItem(this));
+        return super.getMapTreeItem();
+    }
+
     private MindMapModel model = new MindMapModel();
     @Override
     public void addChild(MapNode child) {

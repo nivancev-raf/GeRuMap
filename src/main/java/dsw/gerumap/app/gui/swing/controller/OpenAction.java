@@ -26,11 +26,8 @@ public class OpenAction extends AbstractGeRuMapAction{
             try {
                 File file = jfc.getSelectedFile();
                 Project p = ApplicationFramework.getInstance().getSerializer().loadProject(file);
-                System.out.println("p= " + p);
+                //System.out.println("p= " + p);
                 MainFrame.getInstance().getMapTree().loadProject(p);
-
-                //MindMap m = ApplicationFramework.getInstance().getSerializer().loadMindMap(file);
-                //System.out.println("m= " + m);
 
             } catch (Exception exception) {
                 exception.printStackTrace();

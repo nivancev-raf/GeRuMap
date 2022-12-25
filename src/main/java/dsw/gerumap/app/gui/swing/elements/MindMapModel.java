@@ -22,6 +22,7 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
     protected transient ArrayList<DevicePainter> selectedElements;
 
     protected transient ArrayList<Subscriber> subscribers;
+    //public boolean ready = false;
 
     public MindMapModel(){
         mapElements = new ArrayList();
@@ -39,7 +40,7 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
     }
 
     public void addDiagramElements(DevicePainter device) {
-        device.getDiagramDevice().setStroke(1.0F);
+        //device.getDiagramDevice().setStroke(1.0F);
         this.mapElements.add(device);
         this.notifySubscribers(null); // pozivamo repaint
     }
@@ -77,6 +78,7 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
 
     @Override
     public void notifySubscribers(Object notification) {
+//        if (!ready) return;
         for (Subscriber subs : subscribers){
             subs.update(notification);
         }
