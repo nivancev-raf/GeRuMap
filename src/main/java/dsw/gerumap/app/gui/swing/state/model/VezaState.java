@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.state.model;
-
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.AddVeza;
 import dsw.gerumap.app.gui.swing.elements.LineElement;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.state.State;
@@ -28,18 +29,20 @@ public class VezaState extends State {
     @Override
     public void misKliknut(MouseEvent e, MindMap map) {
         super.misKliknut(e, map);
-            for (int i = 0; i < map.getModel().getMapElements().size(); i++) {
-                if (map.getModel().getMapElements().get(i).elementAt(generatePoint(e.getPoint()))) {
-                    from = map.getModel().getMapElements().get(i).getDiagramDevice().getPosition();
-                    to = from; // crta tacku
-                    line = new LineElement(e.getPoint(), new Dimension(50, 20),  new float[]{0, 0, 0}, 1.0F); // podesavanje same linije
-                    linePainter = new LinePainter(line, from, to,2, new float[]{0,0,0});
-                    line.setDevice1(map.getModel().getMapElements().get(i));
-                    map.getModel().addVeza(linePainter);
-                    break;
-                }
+        for (int i = 0; i < map.getModel().getMapElements().size(); i++) {
+            if (map.getModel().getMapElements().get(i).elementAt(generatePoint(e.getPoint()))) {
+                from = map.getModel().getMapElements().get(i).getDiagramDevice().getPosition();
+                to = from; // crta tacku
+                line = new LineElement(e.getPoint(), new Dimension(50, 20), new float[]{0,0,0}, 1.0F); // podesavanje same linije
+                linePainter = new LinePainter(line, from, to,2, new float[]{0,0,0});
+                line.setDevice1(map.getModel().getMapElements().get(i));
+//                    map.getModel().addVeza(linePainter);
+                AbstractCommand komanda = new AddVeza(map,linePainter);
+                ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(komanda);
+                break;
             }
         }
+    }
 
     @Override
     public void misPovucen(MouseEvent e, MindMap map) {
@@ -201,7 +204,7 @@ public class VezaState extends State {
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (color != Color.black){
+                if (color != Color.black && color!=null){
                     float r = color.getRed();
                     float g = color.getGreen();
                     float b = color.getBlue();

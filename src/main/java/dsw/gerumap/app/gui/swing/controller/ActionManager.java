@@ -25,6 +25,8 @@ public class ActionManager {
     private SettingsAction settingsAction;
     private OpenAction openAction;
     private SaveAction saveAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
 
     public ActionManager(){
 
@@ -52,6 +54,7 @@ public class ActionManager {
         settingsAction = new SettingsAction();
         openAction = new OpenAction();
         saveAction = new SaveAction();
-
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
     }
 }
