@@ -58,6 +58,8 @@ public class SettingsAction extends AbstractGeRuMapAction {
             multiSelectionDialog();
         }else if(map.getMap().getModel().getVeze().size()!=0){
             vezaDialog();
+        }else if(map.getMap().getModel().getVeze().size() == 0 && map.getMap().getModel().getSelectedElements().size() == 1){
+            singleSelectionDialog();
         }
     }
 

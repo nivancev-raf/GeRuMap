@@ -39,6 +39,7 @@ public class SaveAsAction extends AbstractGeRuMapAction{
                 project.setFilePath(projectFile.getPath());
             }
         }else{
+            System.out.println("Putanja file: " + project.getFilePath());
             ApplicationFramework.getInstance().getMessageGenerator().generate(EventType.ALREADY_SAVED);
             return;
         }
