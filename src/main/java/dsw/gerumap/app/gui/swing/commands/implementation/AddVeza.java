@@ -9,7 +9,7 @@ public class AddVeza extends AbstractCommand {
 
     private LinePainter line;
     private MindMap map;
-    private static int size_veze;
+    private int size_veze;
 
     public AddVeza(MindMap map, LinePainter line){
         this.map = map;
@@ -28,6 +28,7 @@ public class AddVeza extends AbstractCommand {
         if (MainFrame.getInstance().getActionManager().getRedoAction().isEnabled()){
             size_veze++;
         }
+
     }
 
 }

@@ -22,7 +22,7 @@ public class DeleteVeza extends AbstractCommand {
     @Override
     public void undoCommand() {
         map.getModel().addVeza(line);
-        //map.getModel().notifySubscribers(null);
+
     }
 
     @Override
@@ -32,13 +32,12 @@ public class DeleteVeza extends AbstractCommand {
             DevicePainter d = it.next();
             if (d.elementAt(e.getPoint())){
                 it.remove();
-                System.out.println("uklonio sam vezu");
                 break;
             }
 
         }
         map.getModel().notifySubscribers(null);
-        //System.out.println("treba da uklonim vezu");
+
 
     }
 

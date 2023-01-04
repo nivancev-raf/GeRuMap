@@ -96,6 +96,10 @@ public class MapTreeImplementation implements MapTree {
 
     @Override
     public MapTreeItem getSelectedNode() {
+        if (treeView.getLastSelectedPathComponent() == null){
+            treeView.setSelectionPath(new TreePath(treeModel.getRoot().getPath()));
+            return (MapTreeItem) treeView.getLastSelectedPathComponent();
+        }
         return (MapTreeItem) treeView.getLastSelectedPathComponent();
     }
 
@@ -126,7 +130,4 @@ public class MapTreeImplementation implements MapTree {
         return ApplicationFramework.getInstance().getMapRepository().getInstance(parent).getNode(parent);
     }
 
-    public MapTreeView getTreeView() {
-        return treeView;
-    }
 }

@@ -1,5 +1,7 @@
 package dsw.gerumap.app.logger;
 
+import lombok.NonNull;
+
 public enum EventType {
 
     ADDING_ELEMENT,
@@ -10,6 +12,13 @@ public enum EventType {
     NON_SELECTED_STATE,
     NUMBERS_ONLY,
     CANNOT_BE_USED,
-    OUT_OF_BOUNDS;
+    OUT_OF_BOUNDS,
+    ALREADY_SAVED,
+    NON_SELECTED_PROJECT,
+    NO_MAPVIEW,
+    EMPTY_MINDMAP,
+    ONLY_ONE_SELECTED,
+    SAVE_AS_PROJECT,
+    NON_CONNECTION;
 
 }

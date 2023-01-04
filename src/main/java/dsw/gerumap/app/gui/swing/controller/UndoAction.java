@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,8 @@ public class UndoAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ApplicationFramework.getInstance().getGui().getCommandManager().undoCommand();
+        int selectedMindMap = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
+        MainFrame.getInstance().getProjectView().getTabbedPane().getMapViewList().get(selectedMindMap).getMap().getCommandManager().undoCommand();
     }
 
 }

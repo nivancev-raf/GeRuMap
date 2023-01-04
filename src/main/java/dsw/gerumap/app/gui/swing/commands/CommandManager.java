@@ -15,10 +15,10 @@ public class CommandManager {
 
     private int currentCommand = 0; // pokazivac na stek
 
-    public void addCommand(AbstractCommand command){ //dolazi prosledjena komanda koja se dodaje u listu komandi i poziva se undoCommand
+    public void addCommand(AbstractCommand command){
         while(currentCommand < commands.size())
             commands.remove(currentCommand);
-        commands.add(command); // stavljamo na stek
+        commands.add(command);
         redoCommand();
     }
 
@@ -36,7 +36,6 @@ public class CommandManager {
         if(currentCommand > 0){
             ApplicationFramework.getInstance().getGui().enableRedoAction();
             commands.get(--currentCommand).undoCommand();
-            //SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getMapTree().getTreeView());
         }
         if(currentCommand==0){
             ApplicationFramework.getInstance().getGui().disableUndoAction();

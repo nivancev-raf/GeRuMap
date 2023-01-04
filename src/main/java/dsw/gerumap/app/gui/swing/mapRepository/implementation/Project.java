@@ -19,11 +19,9 @@ import java.util.List;
 @ToString(callSuper = true)
 
 public class Project extends MapNodeComposite {
-    //private String ime; polje sa imenom vec imamo u mapNode
     private String autor;
     private String filePath;
 
-    protected boolean changed = true;
     private transient MapTreeItem mapTreeItem;
 
     private transient List<Subscriber> subs;
@@ -84,6 +82,5 @@ public class Project extends MapNodeComposite {
     @Override
     public void setName(String name) {
         super.setName(name);
-        changed = true;
     }
 }

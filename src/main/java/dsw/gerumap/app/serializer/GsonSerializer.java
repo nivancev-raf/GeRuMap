@@ -33,7 +33,6 @@ public class GsonSerializer implements Serializer {
 
 
 
-
     @Override
     public void saveProject(Project node) {
         try (FileWriter writer = new FileWriter(node.getFilePath())) {

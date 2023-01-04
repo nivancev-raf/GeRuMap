@@ -37,7 +37,6 @@ public class DeleteAction extends AbstractGeRuMapAction implements Publisher {
             return;
         }
 
-
         MainFrame.getInstance().getMapTree().removeChild(selected);
 
     }

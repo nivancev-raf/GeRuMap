@@ -25,7 +25,7 @@ public class StateManager {
         zoomInState = new ZoomInState();
         zoomOutState = new ZoomOutState();
 
-        currentState = vezaState; // defaultno stanje
+        currentState = pojamState; // defaultno stanje
     }
 
     public State getCurrent(){

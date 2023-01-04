@@ -13,7 +13,6 @@ public interface Gui {
     void enableUndoAction();
     void enableRedoAction();
 
-    CommandManager getCommandManager();
     
     
 }

@@ -9,9 +9,11 @@ import dsw.gerumap.app.gui.swing.view.painters.ElipsePainter;
 public class AddElement extends AbstractCommand {
 
 
-    private static int size;
+    private int size;
     private ElipseElement elipse;
     private MindMap map;
+    int selectedMindMap = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
+
 
     public AddElement (MindMap map, ElipseElement elipse){
         this.map = map;
@@ -21,10 +23,14 @@ public class AddElement extends AbstractCommand {
 
     @Override
     public void undoCommand() {
+        if (MainFrame.getInstance().getActionManager().getRedoAction().isEnabled()
+                && MainFrame.getInstance().getActionManager().getUndoAction().isEnabled()
+                && MainFrame.getInstance().getProjectView().getTabbedPane().getMapViewList().size() > 1){
+            size = map.getModel().getMapElements().size() - 1;
+        }
         map.getModel().getMapElements().remove(size--);
         map.getModel().notifySubscribers(null);
-        System.out.println(map.getModel().getMapElements().size());
-        //System.out.println("size u undo " + (size+1));
+
     }
 
     @Override
@@ -35,7 +41,7 @@ public class AddElement extends AbstractCommand {
         if (MainFrame.getInstance().getActionManager().getRedoAction().isEnabled()){
             size++;
         }
-        //System.out.println("size u redo " + (size + 1));
+
     }
 
 }

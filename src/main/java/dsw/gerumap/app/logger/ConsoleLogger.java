@@ -22,6 +22,12 @@ public class ConsoleLogger implements ErrorLogger, Subscriber {
             System.out.println("Field cannot be empty");
         } else if (message.getType().equals(EventType.FIELD_CANNOT_BE_EMPTY)){
             System.out.println("Select item properly");
+        } else if (message.getType().equals(EventType.NON_CONNECTION)){
+            System.out.println("Add some connections");
+        } else if (message.getType().equals(EventType.ALREADY_SAVED)){
+            System.out.println("Already saved");
+        } else if (message.getType().equals(EventType.ALREADY_SAVED)){
+            System.out.println("You must save project on the saveAs button!");
         }
 
     }

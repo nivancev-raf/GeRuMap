@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 
 public class MouseTreeListener implements MouseListener {
-    private static int i = 0;
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -20,7 +20,6 @@ public class MouseTreeListener implements MouseListener {
         }
 
     }
-
 
     @Override
     public void mousePressed(MouseEvent e) {

@@ -24,10 +24,13 @@ public class ActionManager {
     private ZoomOutAction zoomOutAction;
     private SettingsAction settingsAction;
     private OpenAction openAction;
-    private SaveAction saveAction;
+    private SaveAsAction saveAsAction;
     private UndoAction undoAction;
     private RedoAction redoAction;
-
+    private SaveAction saveAction;
+    private ExportAction exportAction;
+    private GalleryAction galleryAction;
+    private AllocationAction allocationAction;
     public ActionManager(){
 
         initialiseActions();
@@ -43,7 +46,6 @@ public class ActionManager {
         deleteAction = new DeleteAction();
         editAction = new EditAction();
         authorAction = new AuthorAction();
-
         brisanjeAction = new BrisanjeAction();
         pojamAction = new PojamAction();
         pomeranjeAction = new PomeranjeAction();
@@ -53,8 +55,12 @@ public class ActionManager {
         zoomInAction = new ZoomInAction();
         settingsAction = new SettingsAction();
         openAction = new OpenAction();
-        saveAction = new SaveAction();
+        saveAsAction = new SaveAsAction();
         undoAction = new UndoAction();
         redoAction = new RedoAction();
+        saveAction = new SaveAction();
+        exportAction = new ExportAction();
+        galleryAction = new GalleryAction();
+        allocationAction = new AllocationAction();
     }
 }

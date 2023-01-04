@@ -43,7 +43,30 @@ public class MessageGeneratorImplementation implements MessageGenerator, Publish
         } else if(type.equals(EventType.OUT_OF_BOUNDS)){
             message = new Message("Insert under 15 characters",type);
             notifySubscribers(message);
+        } else if(type.equals(EventType.NON_CONNECTION)){
+            message = new Message("No connections between elements OR non selected main element (must be just one)",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.ALREADY_SAVED)){
+            message = new Message("Project has already been saved!",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.NON_SELECTED_PROJECT)){
+            message = new Message("Project must be selected to use this action!",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.NO_MAPVIEW)){
+            message = new Message("Mind Map doesn't exist!",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.EMPTY_MINDMAP)){
+            message = new Message("Mind Map is empty, add some graphics elements!",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.ONLY_ONE_SELECTED)){
+            message = new Message("Only one element can be main element",type);
+            notifySubscribers(message);
+        } else if(type.equals(EventType.SAVE_AS_PROJECT)){
+            message = new Message("You must save project on the saveAs button!",type);
+            notifySubscribers(message);
         }
+
+
     }
 
     @Override

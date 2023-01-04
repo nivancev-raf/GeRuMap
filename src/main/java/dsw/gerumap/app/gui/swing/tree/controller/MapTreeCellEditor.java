@@ -22,7 +22,6 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
     private Object clickedOn =null;
     private JTextField edit=null;
-
     private Subscriber subscriber;
     public MapTreeCellEditor(JTree arg0, DefaultTreeCellRenderer arg1) {
         super(arg0, arg1);

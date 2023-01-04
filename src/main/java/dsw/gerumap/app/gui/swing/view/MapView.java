@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.commands.CommandManager;
 import dsw.gerumap.app.gui.swing.controller.MouseController;
 import dsw.gerumap.app.gui.swing.controller.MouseDragController;
 import dsw.gerumap.app.gui.swing.elements.LineElement;
@@ -28,7 +29,7 @@ public class MapView extends JPanel implements Subscriber {
     double scaling = 1;
     double translateX = 0;
     double translateY = 0;
-    Paint oldColor;
+
 
 
     public MapView(MindMap map){
@@ -43,6 +44,7 @@ public class MapView extends JPanel implements Subscriber {
         this.setPreferredSize(new Dimension(500, 400));
 
 
+
     }
 
 
@@ -51,14 +53,10 @@ public class MapView extends JPanel implements Subscriber {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-//        if (!map.getModel().ready) return;
         Graphics2D g2 = (Graphics2D) g;
         AffineTransform affineTransform = AffineTransform.getTranslateInstance(translateX, translateY);
         affineTransform.scale(scaling, scaling);
         g2.transform(affineTransform);
-
-        //System.out.println(MainFrame.getInstance().getProjectView().getTabbedPane().getMapView());
-
         //omogucava providnost elemenata prilikom njihovog preklapanja
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         // smooth display
@@ -81,11 +79,9 @@ public class MapView extends JPanel implements Subscriber {
             if (((LineElement)line.getDiagramDevice()).getDevice1() != null && ((LineElement)line.getDiagramDevice()).getDevice2() != null){
                 line.setOdPojma(((LineElement)line.getDiagramDevice()).getDevice1().getDiagramDevice().getPosition());
                 line.setDoPojma(((LineElement)line.getDiagramDevice()).getDevice2().getDiagramDevice().getPosition());
-                //oldColor = line.getOldColor();
                 float roc = Array.getFloat(line.getOldColor(), 0);
                 float goc = Array.getFloat(line.getOldColor(), 1);
                 float boc = Array.getFloat(line.getOldColor(), 2);
-                //oldColor = new Color(roc,goc, boc);
                 if (line.getDiagramDevice().isSelected()){
                     line.getDiagramDevice().setPaint(new float[]{0,255,255}); // kada je selektovana
                 }else{
@@ -105,7 +101,6 @@ public class MapView extends JPanel implements Subscriber {
                 selectedPainter.paint(g2, selectedPainter);
             }
             d.paint(g2, d);
-            //System.out.println(d.getShape());
         }
 
     }

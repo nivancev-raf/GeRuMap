@@ -9,9 +9,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
 @Setter
 @Getter
 public class MindMapModel implements Publisher { // klasa koja cuva sve elemente sa mape
@@ -20,9 +24,12 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
     protected ArrayList<DevicePainter> veze;
     protected transient ArrayList<Rectangle2D> rectangle;
     protected transient ArrayList<DevicePainter> selectedElements;
-
+    protected transient List<DevicePainter> listaObrisanihLinija;
     protected transient ArrayList<Subscriber> subscribers;
-    //public boolean ready = false;
+    protected transient HashMap<Integer, List<Point>> krajnjeKoordinateHashMap;
+
+
+
 
     public MindMapModel(){
         mapElements = new ArrayList();
@@ -30,6 +37,8 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
         rectangle = new ArrayList<>();
         selectedElements = new ArrayList<>();
         subscribers = new ArrayList<>();
+        listaObrisanihLinija = new ArrayList<>();
+        krajnjeKoordinateHashMap = new HashMap<>();
     }
 
     public void addSelectedElement(DevicePainter devicePainter){
@@ -40,7 +49,6 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
     }
 
     public void addDiagramElements(DevicePainter device) {
-        //device.getDiagramDevice().setStroke(1.0F);
         this.mapElements.add(device);
         this.notifySubscribers(null); // pozivamo repaint
     }
@@ -78,7 +86,6 @@ public class MindMapModel implements Publisher { // klasa koja cuva sve elemente
 
     @Override
     public void notifySubscribers(Object notification) {
-//        if (!ready) return;
         for (Subscriber subs : subscribers){
             subs.update(notification);
         }

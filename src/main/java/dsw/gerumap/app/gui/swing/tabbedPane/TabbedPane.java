@@ -1,6 +1,7 @@
 package dsw.gerumap.app.gui.swing.tabbedPane;
 
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;

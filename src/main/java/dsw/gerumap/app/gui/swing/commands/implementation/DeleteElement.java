@@ -18,20 +18,19 @@ public class DeleteElement extends AbstractCommand {
 
     @Override
     public void undoCommand() {
-        // na undo treba da dodajem te obrisane
+
         map.getModel().addDiagramElements(elipse);
         map.getModel().notifySubscribers(null);
     }
 
     @Override
     public void redoCommand() {
-        // na redo treba da se brisu
+
         Iterator<DevicePainter> it = map.getModel().getDeviceIterator();
         while(it.hasNext()){
             DevicePainter d = it.next();
             if (d.equals(elipse)){
                 it.remove();
-                //System.out.println("uklonio sam ga");
                 break;
             }
 

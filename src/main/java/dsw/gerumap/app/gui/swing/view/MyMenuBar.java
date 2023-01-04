@@ -11,6 +11,12 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.setMnemonic(KeyEvent.VK_F);
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getAllocationAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getGalleryAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getExportAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveAsAction());
+
         fileMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getAuthorAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());

@@ -11,7 +11,6 @@ import javax.swing.*;
 public class SwingGui implements Gui,Subscriber {
 
     private MainFrame instance;
-    private CommandManager commandManager;
 
     public SwingGui() {
     }
@@ -19,7 +18,8 @@ public class SwingGui implements Gui,Subscriber {
     @Override
     public void start() {
         instance = MainFrame.getInstance();
-        commandManager = new CommandManager();
+        disableRedoAction();
+        disableUndoAction();
         instance.setVisible(true);
     }
 
@@ -44,10 +44,7 @@ public class SwingGui implements Gui,Subscriber {
         MainFrame.getInstance().getActionManager().getRedoAction().setEnabled(true);
     }
 
-    @Override
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
+
 
     @Override
     public void update(Object notification) {

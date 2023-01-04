@@ -11,11 +11,9 @@ import dsw.gerumap.app.gui.swing.mapRepository.implementation.ProjectExplorer;
 
 public class MapRepositoryImplementation implements MapRepository {
     private ProjectExplorer projectExplorer;
-    private CommandManager commandManager;
 
     public MapRepositoryImplementation() {
         projectExplorer = new ProjectExplorer("My Project Explorer");
-        commandManager = new CommandManager();
     }
 
     @Override
@@ -23,10 +21,6 @@ public class MapRepositoryImplementation implements MapRepository {
         return projectExplorer;
     }
 
-    @Override
-    public void addChild(MapNodeComposite parent, MapNode child) {
-
-    }
 
     @Override
     public NodeFactory getInstance(MapNode mapNode) {

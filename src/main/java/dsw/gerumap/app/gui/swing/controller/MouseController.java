@@ -25,8 +25,6 @@ public class MouseController implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        //MapView mapview = MainFrame.getInstance().getProjectView().getTabbedPane().getMapView();
-//        System.out.println(MainFrame.getInstance().getProjectView().getTabbedPane().getMapView());
         if (e.getButton() == 1) {
             State current = MainFrame.getInstance().getProjectView().getStateManager().getCurrent();
             current.misKliknut(e, this.map);

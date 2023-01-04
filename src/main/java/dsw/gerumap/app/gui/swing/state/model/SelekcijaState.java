@@ -7,6 +7,8 @@ import dsw.gerumap.app.gui.swing.view.painters.LinePainter;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class SelekcijaState extends State {
@@ -14,6 +16,7 @@ public class SelekcijaState extends State {
     Point startPoint;
     int found = -1;
     Rectangle2D prostokat = new Rectangle2D.Double();
+
     @Override
     public void misKliknut(MouseEvent e, MindMap map) {
         super.misKliknut(e, map);
@@ -39,20 +42,18 @@ public class SelekcijaState extends State {
                 //deselect
                 LinePainter line = (LinePainter) map.getModel().getVeze().get(found);
                 map.getModel().getVeze().get(found).getDiagramDevice().setSelected(false);
-                //line.getDiagramDevice().setPaint(line.getOldColor());
                 map.getModel().notifySubscribers(null);
                 found = -1;
             }
             for(int i = 0; i<map.getModel().getVeze().size(); i++){
                 LinePainter line = (LinePainter) map.getModel().getVeze().get(i);
-                    if(line.elementAt(generatePoint(e.getPoint()))){
-                        found = i;
-                        map.getModel().getVeze().get(found).getDiagramDevice().setSelected(true);
-                        //line.setOldColor(line.getDiagramDevice().getPaint());
-                        map.getModel().notifySubscribers(null);
-                    }
+                if(line.elementAt(generatePoint(e.getPoint()))){
+                    found = i;
+                    map.getModel().getVeze().get(found).getDiagramDevice().setSelected(true);
+                    map.getModel().notifySubscribers(null);
                 }
             }
+        }
 
         map.getModel().getSelectedElements().removeAll(map.getModel().getSelectedElements());
     }
@@ -66,8 +67,13 @@ public class SelekcijaState extends State {
         for (int i = 0; i < map.getModel().getMapElements().size(); i++){
             if (prostokat.contains(map.getModel().getMapElements().get(i).getDiagramDevice().getPosition())){
                 map.getModel().getMapElements().get(i).getDiagramDevice().setSelected(true);
+                map.getModel().getKrajnjeKoordinateHashMap().put(i, new ArrayList<>());
+                // ovde se dodaje prva pocetna koordinata
+                map.getModel().getKrajnjeKoordinateHashMap().get(i).add(map.getModel().getMapElements().get(i).getDiagramDevice().getPosition());
+
             }else {
                 map.getModel().getMapElements().get(i).getDiagramDevice().setSelected(false);
+                map.getModel().getKrajnjeKoordinateHashMap().remove(i, map.getModel().getMapElements().get(i).getDiagramDevice().getPosition());
             }
         }
         map.getModel().notifySubscribers(null);
@@ -77,10 +83,8 @@ public class SelekcijaState extends State {
     public void misOtpsuten(MouseEvent e, MindMap map) {
         super.misOtpsuten(e, map);
         this.clearSelection(map);
-
         for (int i = 0; i < map.getModel().getMapElements().size(); i++){
             if (map.getModel().getMapElements().get(i).getDiagramDevice().isSelected()){
-                // dodajemo selektovane elemente
                 map.getModel().addSelectedElement(map.getModel().getMapElements().get(i));
             }
         }

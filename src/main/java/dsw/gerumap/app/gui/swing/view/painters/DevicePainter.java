@@ -28,8 +28,6 @@ public class DevicePainter extends ElementPainter{
         }
         if (this instanceof LinePainter){
             ((LinePainter)this).repositionLine(device.getDiagramDevice().getPosition());
-            // ovde treba da se uzme String paint i da se parsuje u int
-            //g.setPaint(device.getDiagramDevice().getPaint());
             float r = Array.getFloat(device.getDiagramDevice().getPaint(), 0);
             float g2 = Array.getFloat(device.getDiagramDevice().getPaint(), 1);
             float b = Array.getFloat(device.getDiagramDevice().getPaint(), 2);

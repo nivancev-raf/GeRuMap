@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.commands.implementation.AddVeza;
 import dsw.gerumap.app.gui.swing.elements.LineElement;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.state.State;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.view.painters.DevicePainter;
 import dsw.gerumap.app.gui.swing.view.painters.LinePainter;
 import dsw.gerumap.app.logger.EventType;
@@ -36,9 +37,9 @@ public class VezaState extends State {
                 line = new LineElement(e.getPoint(), new Dimension(50, 20), new float[]{0,0,0}, 1.0F); // podesavanje same linije
                 linePainter = new LinePainter(line, from, to,2, new float[]{0,0,0});
                 line.setDevice1(map.getModel().getMapElements().get(i));
-//                    map.getModel().addVeza(linePainter);
                 AbstractCommand komanda = new AddVeza(map,linePainter);
-                ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(komanda);
+                int selectedMindMap = MainFrame.getInstance().getProjectView().getTabbedPane().getSelectedIndex();
+                MainFrame.getInstance().getProjectView().getTabbedPane().getMapViewList().get(selectedMindMap).getMap().getCommandManager().addCommand(komanda);
                 break;
             }
         }
@@ -133,7 +134,6 @@ public class VezaState extends State {
 
 
         textField = new JTextField(20);
-        //textField.setText(name);
         cs.gridx = 1;
         cs.gridy = 0;
         cs.gridwidth = 2;

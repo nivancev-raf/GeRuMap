@@ -16,7 +16,6 @@ import java.awt.event.KeyEvent;
 
 public class EditAction extends AbstractGeRuMapAction{
 
-
     private JDialog dialog;
     private JTextField textField;
     private JLabel labela;

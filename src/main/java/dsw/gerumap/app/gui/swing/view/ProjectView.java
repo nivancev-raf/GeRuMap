@@ -5,6 +5,7 @@ import dsw.gerumap.app.core.MapRepository;
 import dsw.gerumap.app.core.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.factory.NodeFactory;
 import dsw.gerumap.app.gui.swing.mapRepository.composite.MapNode;
+import dsw.gerumap.app.gui.swing.mapRepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.mapRepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.state.StateManager;
 import dsw.gerumap.app.gui.swing.tabbedPane.TabbedPane;
@@ -29,14 +30,6 @@ public class ProjectView extends JPanel implements Subscriber{
 
     public ProjectView(){
         initialise();
-        // u konstruktoru view treba doci do metode addSubcriber u Projectu
-//        List<MapNode> mapNodes = ApplicationFramework.getInstance().getMapRepository().getProjectExplorer().getChildren();
-//        for (MapNode mapNode : mapNodes){
-//            if (mapNode instanceof Project){
-//                mapNode.addSubscriber(this);
-//                break;
-//            }
-//        }
     }
 
 
@@ -90,6 +83,7 @@ public class ProjectView extends JPanel implements Subscriber{
         Project p = (Project) notification;
             if (tabbedPane != null){
                 tabbedPane.setTabs(p.getChildren());
+
             }
 
             label1.setText(p.getName());

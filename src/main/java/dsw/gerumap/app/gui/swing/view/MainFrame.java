@@ -50,7 +50,7 @@ public class MainFrame extends JFrame{
         mapTree = new MapTreeImplementation();
         JTree projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
 
-        panel2.setPreferredSize(new Dimension(900,700));
+        panel2.setPreferredSize(new Dimension(700,700));
 
         projectView = new ProjectView();
 
@@ -61,7 +61,7 @@ public class MainFrame extends JFrame{
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().add(splitPane);
-        this.setSize(700,550);
+        this.setSize(900,600);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         splitPane.setDividerLocation(150);

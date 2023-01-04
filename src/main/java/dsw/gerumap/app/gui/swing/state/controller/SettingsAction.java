@@ -17,13 +17,11 @@ import java.awt.event.KeyEvent;
 public class SettingsAction extends AbstractGeRuMapAction {
 
     private JDialog dialog;
-
     private JLabel labela;
     private JLabel labela2;
     private JLabel labela3;
     private JLabel labela4;
     private JPanel panelColor;
-
     private JButton colorButton;
     private Color color;
     private JTextField textField;
@@ -56,12 +54,10 @@ public class SettingsAction extends AbstractGeRuMapAction {
         }
 
 
-        if(map.getMap().getModel().getSelectedElements().size()!=0){
+        if(map.getMap().getModel().getSelectedElements().size() > 1){
             multiSelectionDialog();
         }else if(map.getMap().getModel().getVeze().size()!=0){
             vezaDialog();
-        }else {
-            singleSelectionDialog();
         }
     }
 
@@ -83,7 +79,6 @@ public class SettingsAction extends AbstractGeRuMapAction {
 
 
         textField = new JTextField(20);
-        //textField.setText(name);
         cs.gridx = 1;
         cs.gridy = 0;
         cs.gridwidth = 2;
@@ -212,8 +207,10 @@ public class SettingsAction extends AbstractGeRuMapAction {
     }
 
     private void vezaDialog(){
+        boolean bool = false;
         for(int i = 0; i<map.getMap().getModel().getVeze().size(); i++){
             if(map.getMap().getModel().getVeze().get(i).getDiagramDevice().isSelected()){
+                bool = true;
                 dialog = new JDialog();
                 dialog.setTitle("Settings");
 
@@ -343,6 +340,7 @@ public class SettingsAction extends AbstractGeRuMapAction {
                 break;
             }
         }
+        if (!bool) singleSelectionDialog();
     }
 
 
@@ -355,7 +353,7 @@ public class SettingsAction extends AbstractGeRuMapAction {
                 dialog = new JDialog();
                 dialog.setTitle("Settings");
 
-                JPanel panel = new JPanel(new GridLayout(4, 2, 10, 20));
+                JPanel panel = new JPanel(new GridLayout(5, 2, 10, 20));
                 GridBagConstraints cs = new GridBagConstraints();
 
                 cs.fill = GridBagConstraints.HORIZONTAL;
@@ -425,7 +423,7 @@ public class SettingsAction extends AbstractGeRuMapAction {
                 panel.add(panelColor, cs);
 
 
-                dialog.setSize(490, 240);
+                dialog.setSize(490, 270);
                 dialog.setLocationRelativeTo(null);
                 dialog.setModal(true);
 

@@ -19,7 +19,7 @@ public interface MapTree {
     void deselect();
     MapTreeItem getSelectedNode();
     void loadProject(Project node);
-    MapTreeView getTreeView();
+
 
 
 }

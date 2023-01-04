@@ -26,7 +26,7 @@ public class AuthorAction extends AbstractGeRuMapAction{
 
     public AuthorAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
-                KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+                KeyEvent.VK_A, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/author.png"));
         putValue(NAME, "Add author");
         putValue(SHORT_DESCRIPTION, "Add author ");
@@ -71,7 +71,6 @@ public class AuthorAction extends AbstractGeRuMapAction{
         dialog.setLocationRelativeTo(null);
         dialog.setModal(true);
 
-        // dugmici
         JButton okButton = new JButton("OK");
         JButton cancelButton = new JButton("Cancel");
 
@@ -110,11 +109,7 @@ public class AuthorAction extends AbstractGeRuMapAction{
                     return;
                 }
 
-
-
                 MainFrame.getInstance().getProjectView().getLabel2().setText(((Project) selected.getMapNode()).getAutor());
-
-
 
                 dialog.dispose();
             }
